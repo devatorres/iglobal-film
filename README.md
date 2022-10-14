@@ -1,4 +1,4 @@
-# Ipglobal Test
+# Ipglobal Test [![Netlify Status](https://api.netlify.com/api/v1/badges/9c60bf99-45af-4a83-8ee4-dadc41135707/deploy-status)](https://app.netlify.com/sites/creative-smakager-190ad7/deploys)
 
 <img src="https://img.shields.io/badge/CSS3-f79400?style=flat-square"/>
 <img src="https://img.shields.io/badge/Hooks-1b1b1b?style=flat-square">
