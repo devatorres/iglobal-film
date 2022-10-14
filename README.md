@@ -13,3 +13,7 @@
 ## 📋 Descripción
 
 La prueba consiste en realizar una mini-webapp con un listado de películas con su buscador y formulario de puntaje.
+
+Añadir y explicar
+
+-Me gusta ignorar el prettier en el App para que los Route se dispongan en una linea aunque ocupen mas
