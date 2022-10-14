@@ -27,7 +27,7 @@
     ]
   },
   "sideEffects": [
-    "./src/utils/i18n.js"
+    "./src/services/i18n.ts"
   ],
   "dependencies": {
     "@mui/icons-material": "5.10.9",
@@ -43,7 +43,12 @@
     "util": "0.12.4"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "14.4.3",
+    "@types/jest": "29.1.2",
     "@types/i18next": "13.0.0",
+    "@types/node": "18.8.5",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "@types/react-i18next": "8.1.0",
@@ -62,6 +67,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   }
 }
