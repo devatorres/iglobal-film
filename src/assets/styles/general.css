@@ -1,0 +1,32 @@
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-html);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+div[id='root'] {
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+}
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+}
+
+main {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+}

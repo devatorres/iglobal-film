@@ -1,0 +1,12 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+*.html
+
+# Ignore App file:
+src/App.tsx
+
+# Ignore Models:
+src/models/*.model.js
