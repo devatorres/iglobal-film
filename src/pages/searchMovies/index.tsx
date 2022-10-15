@@ -20,7 +20,7 @@ const SearchMovies: FC = () => {
   return (
     <div>
       <header>
-        <MoviesSearch />
+        <MoviesSearch initialKeyword={keyword} />
       </header>
       <main>
         <p>Resultados de la búsqueda: {decodeURI(keyword)}</p>

@@ -1,25 +1,9 @@
-import { useReducer } from 'react'
+import { useState } from 'react'
 
-type States = {
-  times: number
-  keyword: string
-}
+const useSearch = ({ initialKeyword }: { initialKeyword: string }) => {
+  const [keyword, setKeyword] = useState(initialKeyword)
 
-const reducer = (state: States, action: string) => {
-  return { ...state, keyword: action, times: state.times + 1 }
-}
-
-const useSearch = () => {
-  const [{ keyword }, dispatch] = useReducer(reducer, {
-    keyword: '',
-    times: 0
-  })
-
-  const changeKeyword = (keyword: string): void => {
-    dispatch(keyword)
-  }
-
-  return { keyword, changeKeyword } as const
+  return { keyword, setKeyword } as const
 }
 
 export default useSearch

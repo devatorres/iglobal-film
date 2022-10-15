@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import MovieProps from 'models/movieModel'
+import { useNavigate } from 'react-router-dom'
+import MovieParams from 'models/movieModel'
 import formatDate from 'utils/formatDate'
 import './styles.css'
 
@@ -9,9 +10,14 @@ interface MoviesListProps {
 
 const MoviesList: FC<MoviesListProps> = (props) => {
   const { movies } = props
+  const navigate = useNavigate()
 
-  return movies.map((movie: MovieProps) => (
-    <div key={movie.id}>
+  const handleSelectMovie = (movieId: number) => (): void => {
+    navigate(`/movie/${movieId}`)
+  }
+
+  return movies.map((movie: MovieParams) => (
+    <div key={movie.id} onClick={handleSelectMovie(movie.id)}>
       <img
         height={200}
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

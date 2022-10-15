@@ -1,33 +1,47 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { LANGUAGE } from 'constants/localStorage'
-import useMovies from 'hooks/useMovies'
 import getMovie from 'services/getMovie'
-import MovieProps from 'models/movieModel'
+import MovieParams from 'models/movieModel'
+import MoviesContext from 'contexts/moviesContext'
 
-const useMovie = ({ movieId: id }: { movieId: string | undefined }) => {
-  const { movies } = useMovies()
+type UseMovieProps = {
+  parsedMovieId: number
+}
 
-  const movieId = Number(id)
-  const movieFromCache = movies.find(
-    (movie: MovieProps) => movie.id === movieId
+type GetMovieFromCacheProps = {
+  movies: MovieParams[]
+  movieId: number
+}
+
+const getMovieFromCache = ({
+  movies,
+  movieId
+}: GetMovieFromCacheProps): MovieParams | undefined =>
+  movies.find((movie: MovieParams) => movie.id === movieId)
+
+const useMovie = ({ parsedMovieId: movieId }: UseMovieProps) => {
+  const { i18n } = useTranslation()
+  const { movies }: any = useContext(MoviesContext)
+
+  //Todo isloading iserror en usereducer
+  const [movie, setMovie] = useState<MovieParams | undefined>(
+    getMovieFromCache({ movies, movieId })
   )
-  const [movie, setMovie] = useState(movieFromCache)
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
-  const { i18n } = useTranslation()
-  const languageToUse = i18n.language || window.localStorage[LANGUAGE]
+  const languageToUse: string = i18n.language || window.localStorage[LANGUAGE]
 
   useEffect(() => {
     if (!movie) {
+      const controller = new AbortController()
       setIsLoading(true)
 
-      const controller = new AbortController()
-      const signal = controller.signal
+      console.log('aa')
 
-      getMovie({ movieId, languageToUse, signal })
-        .then((movie: MovieProps) => {
+      getMovie({ movieId, languageToUse, signal: controller.signal })
+        .then((movie: MovieParams) => {
           setMovie(movie)
           setIsError(false)
         })
