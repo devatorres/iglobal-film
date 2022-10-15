@@ -1,21 +1,24 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, Dispatch, SetStateAction } from 'react'
+import { ContextProviderProps } from 'contexts/globalTypes'
+import MovieProps from 'models/movieModel'
 
-type MoviesContextProviderProps = {
-  children: JSX.Element
+interface MoviesContextInterface {
+  movies: MovieProps[]
+  setMovies: Dispatch<SetStateAction<MovieProps[]>>
 }
 
-const Context = createContext({})
+const MoviesContext = createContext<MoviesContextInterface | undefined>(
+  undefined
+)
 
-export const MoviesContextProvider = ({
-  children
-}: MoviesContextProviderProps) => {
-  const [movies, setMovies] = useState<any>([])
+export const MoviesContextProvider = ({ children }: ContextProviderProps) => {
+  const [movies, setMovies] = useState<MovieProps[]>([])
 
   return (
-    <Context.Provider value={{ movies, setMovies }}>
+    <MoviesContext.Provider value={{ movies, setMovies }}>
       {children}
-    </Context.Provider>
+    </MoviesContext.Provider>
   )
 }
 
-export default Context
+export default MoviesContext

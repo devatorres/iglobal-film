@@ -1,6 +1,7 @@
+import { FC } from 'react'
 import './styles.css'
 
-const SearchMovies = () => {
+const SearchMovies: FC = () => {
   return <div></div>
 }
 

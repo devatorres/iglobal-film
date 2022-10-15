@@ -8,25 +8,24 @@
 }
 
 :root {
- 
 }
 
 :root[data-theme='light'] {
- 
+  --color-app: #ffffff;
 }
 
 :root[data-theme='dark'] {
- 
+  --color-app: #2c2c2c;
 }
 
 @media (prefers-color-scheme: light) {
   :root[data-theme='system'] {
-   
+    --color-app: #ffffff;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root[data-theme='system'] {
-  
+    --color-app: #2c2c2c;
   }
 }

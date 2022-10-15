@@ -1,6 +1,7 @@
+import { FC } from 'react'
 import './styles.css'
 
-const NotFound = () => {
+const NotFound: FC = () => {
   return <div></div>
 }
 

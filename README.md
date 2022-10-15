@@ -17,3 +17,5 @@ La prueba consiste en realizar una mini-webapp con un listado de películas con 
 Añadir y explicar
 
 -Me gusta ignorar el prettier en el App para que los Route se dispongan en una linea aunque ocupen mas
+-Mi propio Hook sobre el tema del sistema, en donde por defecto es el oscuro (no aparece su localStorage), y si lo cambias, si se guarda localmente tu eleccion.
+-Sencillo format date script

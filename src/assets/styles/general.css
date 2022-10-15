@@ -1,6 +1,6 @@
 html {
   scroll-behavior: smooth;
-  background-color: var(--color-html);
+  background-color: var(--color-app);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
 }
@@ -24,9 +24,4 @@ div[id='root'] {
   width: 100%;
   min-height: 100vh;
   background-color: transparent;
-}
-
-main {
-  width: 100%;
-  min-height: calc(100vh - var(--header-height));
 }
