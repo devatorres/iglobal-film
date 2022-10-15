@@ -17,7 +17,7 @@ const App: FC = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/search/:searchKeyword" element={<SearchMovies />} />
+              <Route path="/search/:keyword" element={<SearchMovies />} />
               <Route path="/movie/:movieId" element={<DetailMovie />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

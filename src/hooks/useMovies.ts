@@ -17,14 +17,12 @@ const useMovies = ({ keyword } = { keyword: null }) => {
   const languageToUse = i18n.language || window.localStorage[LANGUAGE]
 
   useEffect(() => {
-    console.count()
-
     setLoading(true)
 
     const controller = new AbortController()
     const signal = controller.signal
 
-    getMovies({ languageToUse, signal })
+    getMovies({ languageToUse, signal, ...(keyword !== null && { keyword }) })
       .then(({ results }: GetMoviesProps) => {
         setMovies(results)
         setLoading(false)
@@ -36,7 +34,7 @@ const useMovies = ({ keyword } = { keyword: null }) => {
     return () => {
       controller.abort()
     }
-  }, [languageToUse, setMovies])
+  }, [keyword, languageToUse, setMovies])
 
   return { loading, movies } as const
 }

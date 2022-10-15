@@ -1,11 +1,14 @@
 import { FC } from 'react'
-import useMovies from 'hooks/useMovies'
 import MovieProps from 'models/movieModel'
 import formatDate from 'utils/formatDate'
 import './styles.css'
 
-const MoviesList: FC = () => {
-  const { movies } = useMovies()
+interface MoviesListProps {
+  movies: any
+}
+
+const MoviesList: FC<MoviesListProps> = (props) => {
+  const { movies } = props
 
   return movies.map((movie: MovieProps) => (
     <div key={movie.id}>

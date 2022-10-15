@@ -5,12 +5,12 @@ import useMovie from 'hooks/useMovie'
 import formatDate from 'utils/formatDate'
 import './styles.css'
 
-type DetailMovieParamsProps = {
+type DetailMovieParams = {
   movieId: string
 }
 
 const DetailMovie: FC = () => {
-  const { movieId } = useParams<DetailMovieParamsProps>()
+  const { movieId } = useParams<DetailMovieParams>()
   const { movie, isLoading, isError } = useMovie({ movieId })
 
   if (isLoading) return <div>Cargando...</div>
