@@ -3,11 +3,13 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { LANGUAGE } from 'constants/localStorage'
 import useTheme from 'hooks/useTheme'
+import useUser from 'hooks/useUser'
 import './styles.css'
 
 const NavBar: FC = () => {
   const { i18n, t } = useTranslation()
   const { changeTheme } = useTheme()
+  const { user, createGuestSession, deleteGuestSession } = useUser()
   const navigate = useNavigate()
 
   const handleChangeLanguage = (newCode: string) => (): void => {
@@ -21,6 +23,14 @@ const NavBar: FC = () => {
     navigate('mylist/rated')
   }
 
+  const handleCreateGuestSession = (): void => {
+    createGuestSession()
+  }
+
+  const handleDeleteGuestSession = (): void => {
+    deleteGuestSession()
+  }
+
   return (
     <div>
       <button onClick={handleChangeLanguage('es')}>{t('ess')}</button>
@@ -30,9 +40,18 @@ const NavBar: FC = () => {
       <button onClick={changeTheme('dark')}>Dark</button>
       <button onClick={changeTheme('system')}>System</button>
       <br />
-      <button onClick={handleGoMyList}>
-        Ir a mi lista de películas votadas
-      </button>
+      {user ? (
+        <>
+          <button onClick={handleGoMyList}>
+            Ir a mi lista de películas votadas
+          </button>
+          <button onClick={handleDeleteGuestSession}>Eliminar sesión</button>
+        </>
+      ) : (
+        <button onClick={handleCreateGuestSession}>
+          Iniciar una sesión de invitado
+        </button>
+      )}
     </div>
   )
 }

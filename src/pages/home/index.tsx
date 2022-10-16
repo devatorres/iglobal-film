@@ -5,7 +5,7 @@ import MoviesList from 'components/moviesList'
 import './styles.css'
 
 const Home: FC = () => {
-  const { movies } = useMovies()
+  const { movies } = useMovies('popular')
 
   return (
     <div>

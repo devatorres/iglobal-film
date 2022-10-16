@@ -1,53 +1,50 @@
-import { useState, createContext, Dispatch, SetStateAction } from 'react'
+import { createContext, useState } from 'react'
 import { ContextProviderProps } from 'contexts/globalTypes'
 import MovieParams from 'models/movieModel'
 
+//type State = { theme: 'light' | 'dark' | 'system' }
+//type Actions = { type: string }
+
 interface MoviesContextInterface {
   movies: MovieParams[]
-  setMovies: Dispatch<SetStateAction<MovieParams[]>>
+  updateMovies: (movies: MovieParams[]) => void
+  movieIsLoading: boolean
+  updateMovieIsLoading: (movieIsLoading: boolean) => void
+  movieIsError: boolean
+  updateMovieIsError: (movieIsError: boolean) => void
+  moviesIsLoading: boolean
+  updateMoviesIsLoading: (moviesIsLoading: boolean) => void
 }
+
+//const reducer = (state: State, action: Actions) => {return state}
 
 const MoviesContext = createContext<MoviesContextInterface | undefined>(
   undefined
 )
 
+//Todo reducer
 export const MoviesContextProvider = ({ children }: ContextProviderProps) => {
-  const [movies, setMovies] = useState<MovieParams[]>([])
+  //const [state, dispatch] = useReducer(reducer, {})
+  const [movies, updateMovies] = useState<MovieParams[]>([])
+  const [movieIsLoading, updateMovieIsLoading] = useState(false)
+  const [movieIsError, updateMovieIsError] = useState(false)
+  const [moviesIsLoading, updateMoviesIsLoading] = useState(false)
 
   return (
-    <MoviesContext.Provider value={{ movies, setMovies }}>
+    <MoviesContext.Provider
+      value={{
+        movies,
+        updateMovies,
+        movieIsLoading,
+        updateMovieIsLoading,
+        movieIsError,
+        updateMovieIsError,
+        moviesIsLoading,
+        updateMoviesIsLoading
+      }}>
       {children}
     </MoviesContext.Provider>
   )
 }
 
 export default MoviesContext
-
-/**
- * import { useReducer } from 'react'
-
-type States = {
-  times: number
-  keyword: string
-}
-
-const reducer = (state: States, action: string) => {
-  return { ...state, keyword: action, times: state.times + 1 }
-}
-
-const useSearch = () => {
-  const [{ keyword }, dispatch] = useReducer(reducer, {
-    keyword: '',
-    times: 0
-  })
-
-  const changeKeyword = (keyword: string): void => {
-    dispatch(keyword)
-  }
-
-  return { keyword, changeKeyword } as const
-}
-
-export default useSearch
-
- */

@@ -9,53 +9,55 @@ type UseMovieProps = {
   parsedMovieId: number
 }
 
-type GetMovieFromCacheProps = {
-  movies: MovieParams[]
-  movieId: number
-}
-
-const getMovieFromCache = ({
-  movies,
-  movieId
-}: GetMovieFromCacheProps): MovieParams | undefined =>
-  movies.find((movie: MovieParams) => movie.id === movieId)
-
 const useMovie = ({ parsedMovieId: movieId }: UseMovieProps) => {
   const { i18n } = useTranslation()
-  const { movies }: any = useContext(MoviesContext)
-
-  //Todo isloading iserror en usereducer
-  const [movie, setMovie] = useState<MovieParams | undefined>(
-    getMovieFromCache({ movies, movieId })
-  )
-  const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
+  const {
+    movies,
+    movieIsLoading,
+    updateMovieIsLoading,
+    movieIsError,
+    updateMovieIsError
+  }: any = useContext(MoviesContext)
 
   const languageToUse: string = i18n.language || window.localStorage[LANGUAGE]
+  const [movie, setMovie] = useState<MovieParams | undefined>(
+    movies.find((movie: MovieParams) => movie.id === movieId)
+  ) //? Coger pelicula de la caché si la tiene
 
   useEffect(() => {
-    if (!movie) {
+    if (!movie || movie.language !== languageToUse) {
       const controller = new AbortController()
-      setIsLoading(true)
+      updateMovieIsLoading(true)
 
-      console.log('aa')
+      const successResponse = (movie: MovieParams) => {
+        //? Mejoro el objeto añadiendo el lenguaje
+        setMovie({ ...movie, language: languageToUse })
+        updateMovieIsError(false)
+      }
 
-      getMovie({ movieId, languageToUse, signal: controller.signal })
-        .then((movie: MovieParams) => {
-          setMovie(movie)
-          setIsError(false)
-        })
-        .catch((err) => {
-          if (err.name === 'AbortError') return setIsError(false)
-          setIsError(true)
-        })
-        .finally(() => {
-          setIsLoading(false)
-        })
+      const errorResponse = (error: Error) => {
+        if (error.name === 'AbortError') return updateMovieIsError(false)
+        updateMovieIsError(true)
+      }
+
+      const globalResponse = () => {
+        updateMovieIsLoading(false)
+      }
+
+      const fetchData = async () =>
+        await getMovie({ movieId, languageToUse, signal: controller.signal })
+      fetchData()
+        .then(successResponse)
+        .catch(errorResponse)
+        .finally(globalResponse)
+
+      return () => {
+        controller.abort()
+      }
     }
-  }, [languageToUse, movie, movieId])
+  }, [languageToUse, movie, movieId, updateMovieIsError, updateMovieIsLoading])
 
-  return { movie, isLoading, isError } as const
+  return { movie, movieIsLoading, movieIsError } as const
 }
 
 export default useMovie

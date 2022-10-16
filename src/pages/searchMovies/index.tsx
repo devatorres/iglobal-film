@@ -5,17 +5,11 @@ import MoviesSearch from 'components/moviesSearch'
 import MoviesList from 'components/moviesList'
 import './styles.css'
 
-type SearchMoviesParams = {
-  keyword: any
-}
-
 const SearchMovies: FC = () => {
-  const { keyword } = useParams<SearchMoviesParams>()
-  const { loading, movies } = useMovies({ keyword })
+  const { keyword }: any = useParams()
+  const { moviesIsLoading, movies } = useMovies('keyword', keyword)
 
-  if (loading) {
-    return <div>Cargando...</div>
-  }
+  if (moviesIsLoading) return <div>Cargando...</div>
 
   return (
     <div>

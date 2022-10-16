@@ -1,6 +1,7 @@
 import { FC, lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import NavBar from 'components/navBar'
+import ProtectedRoute from 'components/protectedRoute'
 import SearchMovies from 'pages/searchMovies'
 import DetailMovie from 'pages/detailMovie'
 import RatedMovies from 'pages/ratedMovies'
@@ -20,7 +21,8 @@ const App: FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/search/:keyword" element={<SearchMovies />} />
             <Route path="/movie/:movieId" element={<DetailMovie />} />
-            <Route path="/mylist/rated" element={<RatedMovies />} />
+            {/* ? Si cierras sesión te sales de /mylist */}
+            <Route path="/mylist/rated" element={<ProtectedRoute><RatedMovies /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

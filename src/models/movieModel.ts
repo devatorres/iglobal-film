@@ -3,6 +3,7 @@ interface MovieParams {
   backdrop_path: string | null
   genre_ids: number[]
   id: number
+  language: string
   original_language: string
   original_title: string
   overview: string

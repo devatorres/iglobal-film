@@ -16,6 +16,10 @@ const MoviesList: FC<MoviesListProps> = (props) => {
     navigate(`/movie/${movieId}`)
   }
 
+  if (movies.length === 0) {
+    return <div>Sin resultados...</div>
+  }
+
   return movies.map((movie: MovieParams) => (
     <div key={movie.id} onClick={handleSelectMovie(movie.id)}>
       <img

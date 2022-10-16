@@ -13,10 +13,10 @@ type DetailMovieParams = {
 const DetailMovie: FC = () => {
   const { movieId } = useParams<DetailMovieParams>()
   const parsedMovieId: number = Number(movieId)
-  const { movie, isLoading, isError } = useMovie({ parsedMovieId })
+  const { movie, movieIsLoading, movieIsError } = useMovie({ parsedMovieId })
 
-  if (isLoading) return <div>Cargando...</div>
-  if (isError) return <Navigate to="/notfound" />
+  if (movieIsLoading) return <div>Cargando...</div>
+  if (movieIsError) return <Navigate to="/notfound" />
   if (!movie) return null
 
   return (
