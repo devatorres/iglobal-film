@@ -50,9 +50,8 @@ export const ThemeContextProvider = ({ children }: ContextProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initialState())
 
   useEffect(() => {
-    if (state.theme !== DARK) {
+    if (state.theme !== DARK)
       window.document.documentElement.setAttribute(DATA_THEME, state.theme)
-    }
   }, [state])
 
   const changeTheme = (theme: string) => (): void => {

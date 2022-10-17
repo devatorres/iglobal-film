@@ -53,7 +53,7 @@ const useMovie = ({ parsedMovieId: movieId }: UseMovieProps) => {
         controller.abort()
       }
     }
-  }, [i18n.language, movie, movieId, updateMovieIsError, updateMovieIsLoading])
+  }, [i18n.language, movieId])
 
   return { movie, movieIsLoading, movieIsError } as const
 }
