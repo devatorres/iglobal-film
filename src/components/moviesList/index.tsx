@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { movieLink } from 'constants/router'
 import MovieParams from 'models/movieModel'
 import formatDate from 'utils/formatDate'
 import './styles.css'
@@ -13,7 +14,7 @@ const MoviesList: FC<MoviesListProps> = (props) => {
   const navigate = useNavigate()
 
   const handleSelectMovie = (movieId: number) => () => {
-    navigate(`/movie/${movieId}`)
+    navigate(movieLink(movieId))
   }
 
   const isEmptyResults: boolean = movies.length === 0
@@ -28,7 +29,7 @@ const MoviesList: FC<MoviesListProps> = (props) => {
         height={200}
         src={
           movie.poster_path === null
-            ? 'https://picsum.photos/200'
+            ? 'https://via.placeholder.com/150'
             : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
         }
         loading="lazy"

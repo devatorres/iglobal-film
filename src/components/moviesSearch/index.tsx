@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { searchLink } from 'constants/router'
 import useSearch from 'hooks/useSearch'
 import './styles.css'
 
@@ -19,7 +20,7 @@ const MoviesSearch: FC<MoviesSearchProps> = (props) => {
 
     if (!isEmptyKeyword) {
       const parsedTitle = encodeURI(keyword.trim())
-      navigate(`/search/${parsedTitle}`)
+      navigate(searchLink(parsedTitle))
     }
   }
 

@@ -8,22 +8,36 @@ const useRate = ({ movieId }: { movieId: number }) => {
   const [value, setValue] = useState(DEFAULT_RATE)
   const { user } = useUser()
 
-  const rateSingleMovie = () => {
+  const ratedMovie = () => {
+    if (!user) {
+      //Todo añadir aviso
+      console.log('debes iniciar sesión')
+
+      return undefined
+    }
+
     const successResponse = (response: any): void => {}
 
     const errorResponse = (error: Error): void => {}
 
-    rateMovie({ movieId, value, guestSession: user?.guest_session_id })
+    rateMovie({ movieId, value, guestSession: user.guest_session_id })
       .then(successResponse)
       .catch(errorResponse)
   }
 
   const deleteRateMovie = () => {
+    if (!user) {
+      //Todo añadir aviso
+      console.log('debes iniciar sesión')
+
+      return undefined
+    }
+
     const successResponse = (response: any): void => {}
 
     const errorResponse = (error: Error): void => {}
 
-    deleteRatedMovie({ movieId, guestSession: user?.guest_session_id })
+    deleteRatedMovie({ movieId, guestSession: user.guest_session_id })
       .then(successResponse)
       .catch(errorResponse)
   }
@@ -31,7 +45,7 @@ const useRate = ({ movieId }: { movieId: number }) => {
   return {
     value,
     setValue,
-    rateMovie: rateSingleMovie,
+    rateMovie: ratedMovie,
     deleteRateMovie
   } as const
 }

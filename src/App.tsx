@@ -1,12 +1,13 @@
 import { FC, lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { MoviesContextProvider } from 'contexts/moviesContext'
 import NavBar from 'components/navBar'
 import ProtectedRoute from 'components/protectedRoute'
+import ScrollToTop from 'components/scrollToTop'
 import SearchMovies from 'pages/searchMovies'
 import DetailMovie from 'pages/detailMovie'
 import RatedMovies from 'pages/ratedMovies'
 import NotFound from 'pages/notFound'
-import { MoviesContextProvider } from 'contexts/moviesContext'
 
 const Home = lazy(() => import('pages/home'))
 
@@ -14,6 +15,7 @@ const Home = lazy(() => import('pages/home'))
 const App: FC = () => {
   return (
     <div className='App'>
+      <ScrollToTop />
       <NavBar />
       <MoviesContextProvider>
         <Suspense fallback={null}>

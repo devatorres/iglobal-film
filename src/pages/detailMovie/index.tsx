@@ -1,19 +1,16 @@
-import { FC, Suspense, lazy } from 'react'
+import { FC } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { NOT_FOUND_LINK } from 'constants/router'
+import MovieRate from 'components/movieRate'
 import MoviesSearch from 'components/moviesSearch'
-import useUser from 'hooks/useUser'
 import useMovie from 'hooks/useMovie'
 import formatDate from 'utils/formatDate'
 import './styles.css'
 
-const RateMovie = lazy(() => import('components/movieRate'))
-
 const DetailMovie: FC = () => {
   const { movieId } = useParams()
   const parsedMovieId: number = Number(movieId)
-  const { user } = useUser()
   const { movie, movieIsLoading, movieIsError } = useMovie({ parsedMovieId })
 
   if (movieIsLoading) {
@@ -70,9 +67,7 @@ const DetailMovie: FC = () => {
         <p>{movie.video ? 'Tiene video' : 'No tiene video'}</p>
         <p>Votacion {movie.vote_average}</p>
         <p>Votacion {movie.vote_count}</p>
-        <Suspense fallback={null}>
-          {user && <RateMovie movieId={parsedMovieId} />}
-        </Suspense>
+        <MovieRate movieId={parsedMovieId} />
       </main>
     </div>
   )

@@ -7,13 +7,12 @@ import UserParams from 'models/userModel'
 const useUser = () => {
   const { user, setUser }: any = useContext(UserContext)
 
-  //? Preparo el objeto User para guardar un parametro custom mas
+  //? Mejorar el objeto guardando un parametro custom mas
   const createSession = () => {
     const successResponse = (session: UserParams) => {
-      window.localStorage.setItem(
-        SESSION,
-        JSON.stringify({ ...user, ...session })
-      )
+      const newUser = JSON.stringify({ ...user, ...session })
+
+      window.localStorage.setItem(SESSION, newUser)
       setUser((tempUser: any) => ({ ...tempUser, ...session }))
     }
 

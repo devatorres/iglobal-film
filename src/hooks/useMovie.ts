@@ -18,9 +18,10 @@ const useMovie = ({ parsedMovieId: movieId }: UseMovieProps) => {
     updateMovieIsError
   }: any = useContext(MoviesContext)
 
-  const [movie, setMovie] = useState<MovieParams | undefined>(
-    movies.find((movie: MovieParams) => movie.id === movieId)
-  ) //? Coger pelicula de la caché si la tiene
+  const movieFromCache = movies.find(
+    (movie: MovieParams) => movie.id === movieId
+  )
+  const [movie, setMovie] = useState<MovieParams | undefined>(movieFromCache)
 
   useEffect(() => {
     //? Solo entras si no hay movie o cambia el lenguaje
@@ -29,7 +30,7 @@ const useMovie = ({ parsedMovieId: movieId }: UseMovieProps) => {
       updateMovieIsLoading(true)
 
       const successResponse = (movie: MovieParams) => {
-        //? Mejoro el objeto añadiendo el lenguaje
+        //? Mejorar el objeto añadiendo el lenguaje
         setMovie({ ...movie, language: i18n.language })
         updateMovieIsError(false)
       }
