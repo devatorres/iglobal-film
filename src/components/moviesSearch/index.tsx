@@ -12,10 +12,12 @@ const MoviesSearch: FC<MoviesSearchProps> = (props) => {
   const { keyword, setKeyword } = useSearch({ initialKeyword })
   const navigate = useNavigate()
 
-  const handleSubmit = (event: React.FormEvent): void => {
+  const isEmptyKeyword: boolean = keyword === ''
+
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
 
-    if (keyword !== '') {
+    if (!isEmptyKeyword) {
       const parsedTitle = encodeURI(keyword.trim())
       navigate(`/search/${parsedTitle}`)
     }

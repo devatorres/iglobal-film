@@ -1,15 +1,15 @@
 import { API_KEY, API_URL } from 'constants/dbApi'
 
-type GetMoviesProps = {
-  languageToUse: string
+type GetPopularMoviesProps = {
+  language: string
   signal: AbortSignal
 }
 
 const getPopularMovies = async ({
-  languageToUse: language,
+  language,
   signal
-}: GetMoviesProps) => {
-  const url = `${API_URL}/movie/popular?api_key=${API_KEY}&language=${language}`
+}: GetPopularMoviesProps) => {
+  const url: string = `${API_URL}/movie/popular?api_key=${API_KEY}&language=${language}`
 
   const response = await fetch(url, { signal })
   return await response.json()

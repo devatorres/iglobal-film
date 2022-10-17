@@ -7,7 +7,7 @@ type RateMovieProps = {
 }
 
 const rateMovie = async ({ movieId, value, guestSession }: RateMovieProps) => {
-  const url = `${API_URL}/movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${guestSession}`
+  const url: string = `${API_URL}/movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${guestSession}`
 
   const response = await fetch(url, {
     method: 'POST',

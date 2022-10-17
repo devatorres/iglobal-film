@@ -9,9 +9,14 @@ const deleteRatedMovie = async ({
   movieId,
   guestSession
 }: DeleteRatedMovieProps) => {
-  const url = `${API_URL}/movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${guestSession}`
+  const url: string = `${API_URL}/movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${guestSession}`
 
-  const response = await fetch(url, { method: 'DELETE' })
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    }
+  })
   return await response.json()
 }
 

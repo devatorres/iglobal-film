@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
-import { LANGUAGE } from 'constants/localStorage'
 import getMovie from 'services/getMovie'
 import MovieParams from 'models/movieModel'
 import MoviesContext from 'contexts/moviesContext'
@@ -19,19 +18,19 @@ const useMovie = ({ parsedMovieId: movieId }: UseMovieProps) => {
     updateMovieIsError
   }: any = useContext(MoviesContext)
 
-  const languageToUse: string = i18n.language || window.localStorage[LANGUAGE]
   const [movie, setMovie] = useState<MovieParams | undefined>(
     movies.find((movie: MovieParams) => movie.id === movieId)
   ) //? Coger pelicula de la caché si la tiene
 
   useEffect(() => {
-    if (!movie || movie.language !== languageToUse) {
+    //? Solo entras si no hay movie o cambia el lenguaje
+    if (!movie || movie.language !== i18n.language) {
       const controller = new AbortController()
       updateMovieIsLoading(true)
 
       const successResponse = (movie: MovieParams) => {
         //? Mejoro el objeto añadiendo el lenguaje
-        setMovie({ ...movie, language: languageToUse })
+        setMovie({ ...movie, language: i18n.language })
         updateMovieIsError(false)
       }
 
@@ -40,22 +39,20 @@ const useMovie = ({ parsedMovieId: movieId }: UseMovieProps) => {
         updateMovieIsError(true)
       }
 
-      const globalResponse = () => {
-        updateMovieIsLoading(false)
-      }
-
-      const fetchData = async () =>
-        await getMovie({ movieId, languageToUse, signal: controller.signal })
-      fetchData()
+      getMovie({
+        movieId,
+        language: i18n.language,
+        signal: controller.signal
+      })
         .then(successResponse)
         .catch(errorResponse)
-        .finally(globalResponse)
+        .finally(() => updateMovieIsLoading(false))
 
       return () => {
         controller.abort()
       }
     }
-  }, [languageToUse, movie, movieId, updateMovieIsError, updateMovieIsLoading])
+  }, [i18n.language, movie, movieId, updateMovieIsError, updateMovieIsLoading])
 
   return { movie, movieIsLoading, movieIsError } as const
 }

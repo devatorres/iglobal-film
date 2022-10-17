@@ -12,11 +12,13 @@ const MoviesList: FC<MoviesListProps> = (props) => {
   const { movies } = props
   const navigate = useNavigate()
 
-  const handleSelectMovie = (movieId: number) => (): void => {
+  const handleSelectMovie = (movieId: number) => () => {
     navigate(`/movie/${movieId}`)
   }
 
-  if (movies.length === 0) {
+  const isEmptyResults: boolean = movies.length === 0
+
+  if (isEmptyResults) {
     return <div>Sin resultados...</div>
   }
 
@@ -24,7 +26,11 @@ const MoviesList: FC<MoviesListProps> = (props) => {
     <div key={movie.id} onClick={handleSelectMovie(movie.id)}>
       <img
         height={200}
-        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+        src={
+          movie.poster_path === null
+            ? 'https://picsum.photos/200'
+            : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+        }
         loading="lazy"
         alt="aa"
       />

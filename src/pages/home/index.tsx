@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Helmet } from 'react-helmet'
 import useMovies from 'hooks/useMovies'
 import MoviesSearch from 'components/moviesSearch'
 import MoviesList from 'components/moviesList'
@@ -7,8 +8,12 @@ import './styles.css'
 const Home: FC = () => {
   const { movies } = useMovies('popular')
 
+  //Todo los helmet con i18n
   return (
     <div>
+      <Helmet>
+        <title>Home | Ipglobal Test</title>
+      </Helmet>
       <header>
         <MoviesSearch />
       </header>

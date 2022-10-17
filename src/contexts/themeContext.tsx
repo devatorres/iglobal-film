@@ -1,8 +1,9 @@
 import { createContext, useEffect, useReducer } from 'react'
 import { THEME } from 'constants/localStorage'
+import { LIGHT, DARK, SYSTEM, DATA_THEME } from 'constants/theme'
 import { ContextProviderProps } from 'contexts/globalTypes'
 
-type State = { theme: 'light' | 'dark' | 'system' }
+type State = { theme: typeof LIGHT | typeof DARK | typeof SYSTEM }
 type Actions = { type: string }
 
 interface Reducers {
@@ -17,18 +18,18 @@ interface ThemeContextInterface {
 
 const ACTIONS_REDUCERS: Reducers = {
   light: (state: State) => {
-    window.localStorage.setItem(THEME, 'light')
-    window.document.documentElement.setAttribute('data-theme', 'light')
+    window.localStorage.setItem(THEME, LIGHT)
+    window.document.documentElement.setAttribute(DATA_THEME, LIGHT)
     return state
   },
   dark: (state: State) => {
     window.localStorage.removeItem(THEME)
-    window.document.documentElement.setAttribute('data-theme', 'dark')
+    window.document.documentElement.setAttribute(DATA_THEME, DARK)
     return state
   },
   system: (state: State) => {
-    window.localStorage.setItem(THEME, 'system')
-    window.document.documentElement.setAttribute('data-theme', 'system')
+    window.localStorage.setItem(THEME, SYSTEM)
+    window.document.documentElement.setAttribute(DATA_THEME, SYSTEM)
     return state
   }
 }
@@ -40,7 +41,7 @@ const reducer = (state: State, action: Actions) => {
 
 const initialState = () => {
   const theme = window.localStorage[THEME]
-  return Boolean(theme) ? { theme } : { theme: 'dark' }
+  return Boolean(theme) ? { theme } : { theme: DARK }
 }
 
 const ThemeContext = createContext<ThemeContextInterface | undefined>(undefined)
@@ -49,8 +50,8 @@ export const ThemeContextProvider = ({ children }: ContextProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initialState())
 
   useEffect(() => {
-    if (state.theme !== 'dark') {
-      window.document.documentElement.setAttribute('data-theme', state.theme)
+    if (state.theme !== DARK) {
+      window.document.documentElement.setAttribute(DATA_THEME, state.theme)
     }
   }, [state])
 

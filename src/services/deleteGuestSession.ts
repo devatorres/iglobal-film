@@ -1,9 +1,18 @@
 import { API_KEY, API_URL } from 'constants/dbApi'
 
-const deleteGuestSession = async () => {
-  const url = `${API_URL}/authentication/session?api_key=${API_KEY}`
+type DeleteGuestSessionProps = {
+  guestSession: string
+}
 
-  const response = await fetch(url)
+const deleteGuestSession = async ({
+  guestSession
+}: DeleteGuestSessionProps) => {
+  const url: string = `${API_URL}/authentication/session?api_key=${API_KEY}`
+
+  const response = await fetch(url, {
+    method: 'DELETE',
+    body: JSON.stringify({ session_id: guestSession })
+  })
   return await response.json()
 }
 
