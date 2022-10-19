@@ -165,3 +165,42 @@
   font-weight: 400;
   color: var(--font);
 }
+
+@media screen and (max-width: 580px) {
+  .movies-list {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .movie {
+    width: 250px;
+    height: calc(350px + 1.2rem + 1rem + 60px + 20px);
+  }
+
+  .movie .poster .percent {
+    bottom: 16px;
+    right: 16px;
+    padding: 4px 8px;
+    font-size: 1.4rem;
+  }
+
+  .movie .poster {
+    width: 250px;
+    height: 350px;
+    margin-bottom: 1.2rem;
+  }
+
+  .movie .poster img {
+    width: 250px;
+    height: 350px;
+  }
+
+  .movie .title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .movie .date {
+    font-size: 1.4rem;
+  }
+}

@@ -10,6 +10,7 @@
   .movies-search {
     width: 100%;
     min-width: unset;
+    transform: translateY(1.55rem);
   }
 }
 

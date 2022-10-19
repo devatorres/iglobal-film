@@ -41,3 +41,17 @@
     transform: translateY(0);
   }
 }
+
+@media screen and (max-width: 580px) {
+  .scroll-to-top {
+    right: 32px;
+    bottom: 32px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .scroll-to-top .animator svg {
+    width: 42px;
+    height: 42px;
+  }
+}
