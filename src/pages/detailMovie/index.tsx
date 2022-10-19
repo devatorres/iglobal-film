@@ -1,9 +1,10 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { NOT_FOUND_LINK } from 'constants/router'
 import { useTranslation } from 'react-i18next'
 import { LinearProgress } from '@mui/material'
+import { API_IMAGE_URL, API_IMAGE_URL_ORIGINAL } from 'constants/dbApi'
 import MovieRate from 'components/movieRate'
 import MoviesSearch from 'components/moviesSearch'
 import useMovie from 'hooks/useMovie'
@@ -39,7 +40,11 @@ const DetailMovie: FC = () => {
           <title>{t('loading')} · iGlobal Film</title>
         </Helmet>
         <header>
+          <div className="decoration backdrop" />
           <MoviesSearch />
+          <figure className="poster loading">
+            <img src={NotFound} loading="lazy" alt={t('notFound')} />
+          </figure>
         </header>
         <main></main>
       </div>
@@ -58,7 +63,7 @@ const DetailMovie: FC = () => {
         {movie.backdrop_path !== null && (
           <figure className="preview backdrop">
             <img
-              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+              src={`${API_IMAGE_URL_ORIGINAL}/${movie.backdrop_path}`}
               alt={movie.title}
               loading="lazy"
             />
@@ -71,7 +76,7 @@ const DetailMovie: FC = () => {
             src={
               movie.poster_path === null
                 ? NotFound
-                : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                : `${API_IMAGE_URL}${movie.poster_path}`
             }
             loading="lazy"
             alt={movie.title}

@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { movieLink } from 'constants/router'
 import { LinearProgress } from '@mui/material'
+import { API_IMAGE_URL } from 'constants/dbApi'
 import MovieParams from 'models/movieModel'
 import formatDate from 'utils/formatDate'
 import NotFound from 'assets/images/not_found.png'
@@ -40,7 +41,7 @@ const MovieItem: FC<MovieItemProps> = (props) => {
           src={
             movie.poster_path === null
               ? NotFound
-              : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              : `${API_IMAGE_URL}/${movie.poster_path}`
           }
           loading="lazy"
           alt={movie.title}

@@ -52,6 +52,10 @@
   transition-timing-function: ease;
 }
 
+.wrapper-detail header .poster.loading {
+  border-radius: 10px;
+}
+
 .wrapper-detail header .poster .percent {
   position: absolute;
   display: block;
@@ -114,6 +118,10 @@
   border-radius: 10px 10px 0 0;
   object-fit: cover;
   object-position: center center;
+}
+
+.wrapper-detail header .poster.loading img {
+  border-radius: 10px;
 }
 
 .wrapper-detail main {
