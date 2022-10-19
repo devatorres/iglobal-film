@@ -37,3 +37,20 @@
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 580px) {
+  .wrapper-navbar {
+    gap: 1rem;
+    flex-flow: row nowrap;
+    justify-content: center;
+    height: 60px;
+    padding: 12px 48px;
+    backdrop-filter: blur(20px);
+    border-bottom: solid thin var(--header-border);
+  }
+
+  .navbar-logo {
+    height: 35px;
+    margin-bottom: 0;
+  }
+}

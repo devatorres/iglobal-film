@@ -29,9 +29,24 @@ div[id='root'] {
   min-height: 100vh;
 }
 
+:is(.wrapper-home, .wrapper-detail, .wrapper-not-found, .wrapper-rated, .wrapper-search) {
+  width: 100%;
+  min-height: 100vh;
+}
+
 .MuiSnackbarContent-root {
   background-color: var(--snackbar-background) !important;
   border: solid 1px var(--snackbar-background-border) !important;
   color: var(--font) !important;
   font-size: 14px !important;
+}
+
+@media screen and (max-width: 580px) {
+  .App {
+    display: block;
+  }
+
+  :is(.wrapper-home, .wrapper-detail, .wrapper-not-found, .wrapper-rated, .wrapper-search) {
+    min-height: calc(100vh - 60px);
+  }
 }

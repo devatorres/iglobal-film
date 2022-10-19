@@ -6,6 +6,13 @@
   min-width: 450px;
 }
 
+@media screen and (max-width: 580px) {
+  .movies-search {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
 .movies-search input {
   appearance: none;
   width: 100%;
@@ -38,7 +45,7 @@
   height: 45px;
   background-color: transparent;
   border: none;
-  color: var(--font);
+  color: var(--color-primary);
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 180ms ease;
