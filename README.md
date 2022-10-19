@@ -21,3 +21,4 @@ Añadir y explicar
 - Sencillo format date script
 - helmet para el SEO
 - just-debounce-it para reducir las llamadas a 1
+- Rellax

@@ -1,55 +1,115 @@
-import { FC } from 'react'
+import { FC, SetStateAction, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { LANGUAGE } from 'constants/localStorage'
-import { DEFAULT_LANGUAGE } from 'constants/default'
 import { MY_LIST_LINK } from 'constants/router'
-import { CODE_ES, CODE_EN } from 'constants/config'
-import { DARK, LIGHT, SYSTEM } from 'constants/theme'
-import useTheme from 'hooks/useTheme'
 import useUser from 'hooks/useUser'
+import Logo from 'components/navBar/logo'
+import IconButton from 'components/iconButton'
+import LanguageSelector from 'components/languageSelector'
+import ThemeSelector from 'components/themeSelector'
+import GuestSessionModal from 'components/guestSessionModal'
+import Notification from 'components/notification'
+import LanguageIcon from '@mui/icons-material/Language'
+import ThemeIcon from '@mui/icons-material/InvertColors'
+import UserIcon from '@mui/icons-material/PersonOutline'
+import ListIcon from '@mui/icons-material/MovieCreationOutlined'
 import './styles.css'
 
 const NavBar: FC = () => {
-  const { i18n, t } = useTranslation()
-  const { changeTheme } = useTheme()
+  const { t } = useTranslation()
   const { user, createGuestSession } = useUser()
+  const [openSessionModal, setOpenSessionModal] = useState(false)
+  const [openNotification, setOpenNotification] = useState(false)
+  const [anchorLanguage, setAnchorLanguage] = useState(null)
+  const [anchorTheme, setAnchorTheme] = useState(null)
   const navigate = useNavigate()
+  const openLanguage = Boolean(anchorLanguage)
+  const openTheme = Boolean(anchorTheme)
+  const idLanguage = openLanguage ? 'btnChangeLanguage' : undefined
+  const idTheme = openTheme ? 'btnChangeTheme' : undefined
 
-  const handleChangeLanguage = (newCode: string) => () => {
-    i18n.changeLanguage(newCode)
-    newCode === DEFAULT_LANGUAGE
-      ? window.localStorage.removeItem(LANGUAGE)
-      : window.localStorage.setItem(LANGUAGE, newCode)
+  const handleGoDashboard = () => {
+    navigate('/')
+  }
+
+  const handleOpenLanguageList = (event: {
+    currentTarget: SetStateAction<null>
+  }) => {
+    setAnchorLanguage(event.currentTarget)
+  }
+
+  const handleOpenThemeList = (event: {
+    currentTarget: SetStateAction<null>
+  }) => {
+    setAnchorTheme(event.currentTarget)
   }
 
   const handleGoMyList = () => {
+    if (!user) {
+      setOpenSessionModal(true)
+      return undefined
+    }
+
     navigate(MY_LIST_LINK)
   }
 
-  const handleCreateGuestSession = () => {
-    createGuestSession()
+  const handleCreateGuestSession = async () => {
+    await createGuestSession()
+    setOpenNotification(true)
+  }
+
+  const handleCloseNotification = () => {
+    setOpenNotification(false)
   }
 
   return (
-    <div>
-      <button onClick={handleChangeLanguage(CODE_ES)}>{t('ess')}</button>
-      <button onClick={handleChangeLanguage(CODE_EN)}>{t('enn')}</button>
-      <br />
-      <button onClick={changeTheme(LIGHT)}>Light</button>
-      <button onClick={changeTheme(DARK)}>Dark</button>
-      <button onClick={changeTheme(SYSTEM)}>System</button>
-      <br />
-      {user ? (
-        <button onClick={handleGoMyList}>
-          Ir a mi lista de películas votadas
-        </button>
-      ) : (
-        <button onClick={handleCreateGuestSession}>
-          Iniciar una sesión de invitado
-        </button>
+    <nav className="wrapper-navbar">
+      <Logo click={handleGoDashboard} />
+      <IconButton
+        id={idLanguage}
+        title={t('changeLanguage')}
+        click={handleOpenLanguageList}>
+        <LanguageIcon />
+      </IconButton>
+      <IconButton
+        id={idTheme}
+        title={t('changeTheme')}
+        click={handleOpenThemeList}>
+        <ThemeIcon />
+      </IconButton>
+      <IconButton click={handleGoMyList} title={t('goMyList')}>
+        <ListIcon />
+      </IconButton>
+      {!user && (
+        <IconButton
+          click={handleCreateGuestSession}
+          title={t('createGuestSession')}>
+          <UserIcon />
+        </IconButton>
       )}
-    </div>
+      <LanguageSelector
+        id={idLanguage}
+        open={openLanguage}
+        anchorEl={anchorLanguage}
+        setAnchorEl={setAnchorLanguage}
+      />
+      <ThemeSelector
+        id={idTheme}
+        open={openTheme}
+        anchorEl={anchorTheme}
+        setAnchorEl={setAnchorTheme}
+      />
+      <GuestSessionModal
+        open={openSessionModal}
+        setOpen={setOpenSessionModal}
+        action={handleCreateGuestSession}
+      />
+      <Notification
+        message={t('notification.sessionCreate')}
+        open={openNotification}
+        close={handleCloseNotification}
+      />
+    </nav>
   )
 }
 

@@ -82,6 +82,8 @@ const useMovies = (action: string, keyword = undefined) => {
 
     const errorResponse = (error: Error) => {
       if (error.name === 'AbortError') return undefined
+
+      //! Se puede añadir los avisos de error que sean necesarios
     }
 
     getSearchMovies({

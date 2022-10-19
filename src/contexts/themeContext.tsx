@@ -13,6 +13,7 @@ interface Reducers {
 }
 
 interface ThemeContextInterface {
+  theme: string
   changeTheme: (theme: string) => void
 }
 
@@ -20,17 +21,17 @@ const ACTIONS_REDUCERS: Reducers = {
   light: (state: State) => {
     window.localStorage.setItem(THEME, LIGHT)
     window.document.documentElement.setAttribute(DATA_THEME, LIGHT)
-    return state
+    return { ...state, theme: LIGHT }
   },
   dark: (state: State) => {
     window.localStorage.removeItem(THEME)
     window.document.documentElement.setAttribute(DATA_THEME, DARK)
-    return state
+    return { ...state, theme: DARK }
   },
   system: (state: State) => {
     window.localStorage.setItem(THEME, SYSTEM)
     window.document.documentElement.setAttribute(DATA_THEME, SYSTEM)
-    return state
+    return { ...state, theme: SYSTEM }
   }
 }
 
@@ -54,12 +55,12 @@ export const ThemeContextProvider = ({ children }: ContextProviderProps) => {
       window.document.documentElement.setAttribute(DATA_THEME, state.theme)
   }, [state])
 
-  const changeTheme = (theme: string) => (): void => {
+  const changeTheme = (theme: string) => {
     dispatch({ type: theme })
   }
 
   return (
-    <ThemeContext.Provider value={{ changeTheme }}>
+    <ThemeContext.Provider value={{ theme: state.theme, changeTheme }}>
       {children}
     </ThemeContext.Provider>
   )

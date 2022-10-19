@@ -1,0 +1,39 @@
+.wrapper-navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 48px 12px;
+  border-right: solid thin var(--header-border);
+  background-color: var(--header-background);
+  z-index: 1100;
+}
+
+.navbar-logo {
+  width: 50px;
+  margin-bottom: 6rem;
+  overflow: visible;
+  cursor: pointer;
+  transition: filter 180ms ease;
+}
+
+.navbar-logo:hover {
+  filter: drop-shadow(0 0 6px var(--header-logo-shadow));
+}
+
+.navbar-logo:hover .casette {
+  transform-origin: 38% 47%;
+  animation: drive 3s linear infinite;
+}
+
+@keyframes drive {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
