@@ -1,4 +1,28 @@
 {
-  "ess": "Change of Español",
-  "enn": "Change of Inglés"
+  "home": "Home",
+  "loading": "Loading...",
+  "scrollToTop": "Scroll to top",
+  "changeLanguage": "Change language",
+  "changeTheme": "Change theme",
+  "goMyList": "Go my list",
+  "createGuestSession": "Create guest session",
+  "guestSessionModal": {
+    "title": "New guest session",
+    "description": "You must create a guest session to be able to rate movies and access your rated list."
+  },
+  "createSession": "New session",
+  "noThanks": "No thanks",
+  "notification": {
+    "sessionCreate": "Clever! Your session has been started successfully.",
+    "rateMovie": "Clever! Your rated a movie successfully."
+  },
+  "headerPreview": "Presentation of iGlobal Film",
+  "searchBarPlaceholder": "Search movies here...",
+  "results": "results of",
+  "rated": "My list",
+  "ratedTitle": "Here are the movies you have voted",
+  "noResults": "Nothing movie voted.",
+  "originalLanguage": "Original language",
+  "originalTitle": "Original title",
+  "vote": "Rate"
 }

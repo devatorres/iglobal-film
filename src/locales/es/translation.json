@@ -1,4 +1,28 @@
 {
-  "ess": "Cambiar a Español",
-  "enn": "Cambiar a Inglés"
+  "home": "Inicio",
+  "loading": "Cargando...",
+  "scrollToTop": "Ir al inicio",
+  "changeLanguage": "Cambiar idioma",
+  "changeTheme": "Cambiar tema",
+  "goMyList": "Ir a mi lista",
+  "createGuestSession": "Crear sesión de invitado",
+  "guestSessionModal": {
+    "title": "Nueva sesión de invitado",
+    "description": "Debes iniciar una sesión de invitado para poder votar películas y acceder a tu lista de votadas."
+  },
+  "createSession": "Nueva sesión",
+  "noThanks": "No gracias",
+  "notification": {
+    "sessionCreate": "¡Listo! Tú sesión ha sido iniciada con éxito.",
+    "rateMovie": "¡Listo! Tú has votado una película con éxito."
+  },
+  "headerPreview": "Presentación de iGlobal Film",
+  "searchBarPlaceholder": "Buscar películas aquí...",
+  "results": "resultados de",
+  "rated": "Mi lista",
+  "ratedTitle": "Estas son las películas que has votado",
+  "noResults": "Ninguna película votada.",
+  "originalLanguage": "Original idioma",
+  "originalTitle": "Original título",
+  "vote": "Votar"
 }

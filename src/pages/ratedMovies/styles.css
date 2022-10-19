@@ -1,0 +1,25 @@
+.wrapper-rated {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.wrapper-rated header {
+  width: 100%;
+  padding: 48px 24px 12px 24px;
+}
+
+.wrapper-rated header .movies-search {
+  transform: translateY(0) !important;
+}
+
+.wrapper-rated header .title {
+  margin-top: 1.5rem;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--font);
+}
+
+.wrapper-rated main {
+  width: 100%;
+  padding: 48px 24px;
+}

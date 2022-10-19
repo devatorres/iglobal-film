@@ -38,6 +38,8 @@ const useMovie = ({ parsedMovieId: movieId }: UseMovieProps) => {
       const errorResponse = (error: Error) => {
         if (error.name === 'AbortError') return updateMovieIsError(false)
         updateMovieIsError(true)
+
+        //! Se puede añadir los avisos de error que sean necesarios
       }
 
       getMovie({

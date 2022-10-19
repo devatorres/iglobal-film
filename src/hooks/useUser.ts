@@ -16,9 +16,11 @@ const useUser = () => {
       setUser((tempUser: any) => ({ ...tempUser, ...session }))
     }
 
-    const errorResponse = (error: Error) => {}
+    const errorResponse = (error: Error) => {
+      //! Se puede añadir los avisos de error que sean necesarios
+    }
 
-    createGuestSession().then(successResponse).catch(errorResponse)
+    return createGuestSession().then(successResponse).catch(errorResponse)
   }
 
   return {

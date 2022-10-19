@@ -24,7 +24,6 @@ type Actions = { type: string; payload: any }
 
 const ACTIONS = {
   UPDATE_MOVIES: 'update_movies',
-  UPDATE_MOVIES_SHOW: 'update_movies_show',
   UPDATE_MOVIES_LOADING: 'update_movies_loading',
   UPDATE_MOVIE_LOADING: 'update_movie_loading',
   UPDATE_MOVIE_ERROR: 'update_movie_error'

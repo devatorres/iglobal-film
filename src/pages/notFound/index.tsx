@@ -3,12 +3,12 @@ import { Helmet } from 'react-helmet'
 import './styles.css'
 
 const NotFound: FC = () => {
-  //Todo los helmet con i18n
   return (
-    <div>
+    <div className="wrapper-not-found">
       <Helmet>
-        <title>Error 404 | Ipglobal Test</title>
+        <title>Error 404 · iGlobal Film</title>
       </Helmet>
+      <p className="title">404</p>
     </div>
   )
 }

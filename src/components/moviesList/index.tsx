@@ -1,44 +1,41 @@
 import { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { movieLink } from 'constants/router'
+import { DEFAULT_CASPER_LIST } from 'constants/default'
+import { useTranslation } from 'react-i18next'
+import MovieItem from 'components/moviesList/MovieItem'
 import MovieParams from 'models/movieModel'
-import formatDate from 'utils/formatDate'
 import './styles.css'
 
 interface MoviesListProps {
-  movies: any
+  movies?: MovieParams[] | undefined
 }
 
 const MoviesList: FC<MoviesListProps> = (props) => {
+  const { t } = useTranslation()
   const { movies } = props
-  const navigate = useNavigate()
 
-  const handleSelectMovie = (movieId: number) => () => {
-    navigate(movieLink(movieId))
-  }
+  const isEmptyResults: boolean = movies ? movies.length === 0 : false
 
-  const isEmptyResults: boolean = movies.length === 0
+  if (isEmptyResults)
+    return (
+      <section className="movies-list reset">
+        <p className="no-results">{t('noResults')}</p>
+      </section>
+    )
 
-  if (isEmptyResults) {
-    return <div>Sin resultados...</div>
-  }
-
-  return movies.map((movie: MovieParams) => (
-    <div key={movie.id} onClick={handleSelectMovie(movie.id)}>
-      <img
-        height={200}
-        src={
-          movie.poster_path === null
-            ? 'https://via.placeholder.com/150'
-            : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-        }
-        loading="lazy"
-        alt="aa"
-      />
-      <span>{movie.title}</span>
-      <span>{formatDate(new Date(movie.release_date))}</span>
-    </div>
-  ))
+  return (
+    <section className="movies-list">
+      {!movies
+        ? DEFAULT_CASPER_LIST.map((index: number) => (
+            <article key={index} className="fake-movie">
+              <div className="movie" />
+              <div className="title" />
+            </article>
+          ))
+        : movies.map((movie: MovieParams) => (
+            <MovieItem key={movie.id} movie={movie} />
+          ))}
+    </section>
+  )
 }
 
 export default MoviesList

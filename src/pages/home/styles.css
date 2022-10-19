@@ -1,0 +1,54 @@
+.wrapper-home {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.wrapper-home header {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 450px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.wrapper-home header .backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 450px;
+  user-select: none;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.wrapper-home header .decoration {
+  background: linear-gradient(
+    0deg,
+    var(--color-app) 0%,
+    var(--color-app-casper) 30%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.wrapper-home header .preview img {
+  width: 100%;
+  height: 450px;
+  filter: saturate(0.5);
+  object-fit: cover;
+  object-position: center center;
+}
+
+.wrapper-home header .header-logo {
+  width: 120px;
+}
+
+.wrapper-home main {
+  width: 100%;
+  min-height: calc(100vh - 450px);
+  padding: 48px 24px;
+}

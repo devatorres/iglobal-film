@@ -20,7 +20,18 @@ div[id='root'] {
 }
 
 .App {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
   width: 100%;
   min-height: 100vh;
-  background-color: transparent;
+}
+
+.MuiSnackbarContent-root {
+  background-color: var(--snackbar-background) !important;
+  border: solid 1px var(--snackbar-background-border) !important;
+  color: var(--font) !important;
+  font-size: 14px !important;
 }
