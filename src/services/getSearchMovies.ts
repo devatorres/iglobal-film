@@ -1,4 +1,4 @@
-import { API_KEY, API_URL } from 'constants/dbApi'
+import { API_URL } from 'constants/dbApi'
 
 type GetSearchMoviesProps = {
   language: string
@@ -13,7 +13,7 @@ const getSearchMovies = async ({
   page,
   keyword
 }: GetSearchMoviesProps) => {
-  const url: string = `${API_URL}/search/movie?api_key=${API_KEY}&language=${language}&query=${keyword}&page=${page}`
+  const url: string = `${API_URL}/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=${language}&query=${keyword}&page=${page}`
 
   const response = await fetch(url, { signal })
   return await response.json()

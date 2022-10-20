@@ -1,4 +1,4 @@
-import { API_KEY, API_URL } from 'constants/dbApi'
+import { API_URL } from 'constants/dbApi'
 
 type RateMovieProps = {
   movieId: number
@@ -7,7 +7,7 @@ type RateMovieProps = {
 }
 
 const rateMovie = async ({ movieId, value, guestSession }: RateMovieProps) => {
-  const url: string = `${API_URL}/movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${guestSession}`
+  const url: string = `${API_URL}/movie/${movieId}/rating?api_key=${process.env.REACT_APP_API_KEY}&guest_session_id=${guestSession}`
 
   const response = await fetch(url, {
     method: 'POST',
