@@ -19,7 +19,7 @@ La prueba consiste en realizar una mini-webapp con un listado de películas con 
 
 ## 🔨 Cómo arrancarlo
 
-Hay una posibilidad de ver una preview desplegada en _Netlify_ [https://creative-smakager-190ad7.netlify.app/](https://creative-smakager-190ad7.netlify.app/). Pero como programador seguro que llama más la atención usar un poco de npm 😉. Es tan sencillo como clonar el proyecto `git clone <url>`, instalar las dependencias `npm install` y ejecutarlo `npm start`.
+Hay una posibilidad de ver una preview desplegada en _Netlify_ [https://creative-smakager-190ad7.netlify.app/](https://creative-smakager-190ad7.netlify.app/). Pero como programador seguro que llama más la atención usar un poco de npm 😉. Es tan sencillo como clonar el proyecto `git clone <url>`, instalar las dependencias `npm install` y ejecutarlo `npm start`. (Cuidado, no tienes visible el API_KEY, ya que está en un .env)
 
 ## 📚 El Por qué de algunas cosas
 
