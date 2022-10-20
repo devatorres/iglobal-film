@@ -20,13 +20,22 @@
   transition: filter 180ms ease;
 }
 
+.navbar-logo .casette {
+  animation-name: drive;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  transform-origin: 38% 47%;
+  will-change: transform;
+}
+
 .navbar-logo:hover {
   filter: drop-shadow(0 0 6px var(--header-logo-shadow));
 }
 
 .navbar-logo:hover .casette {
-  transform-origin: 38% 47%;
-  animation: drive 3s linear infinite;
+  animation-play-state: running;
 }
 
 @keyframes drive {
@@ -55,5 +64,9 @@
     left: 24px;
     height: 35px;
     margin-bottom: 0;
+  }
+
+  .navbar-logo .casette {
+    animation: drive 3s linear infinite;
   }
 }

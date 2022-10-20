@@ -24,7 +24,7 @@
   height: calc(225px + 1rem + 50px);
 }
 
-.fake-movie .movie {
+.fake-movie .poster {
   width: 150px;
   height: 225px;
   margin-bottom: 1rem;
@@ -39,15 +39,6 @@
   background-image: var(--fake-background);
   background-size: 400%;
   animation: shimmer 1500ms infinite;
-}
-
-@keyframes shimmer {
-  from {
-    background-position: 100% 100%;
-  }
-  to {
-    background-position: 0 0;
-  }
 }
 
 .movie {
@@ -166,6 +157,15 @@
   color: var(--font);
 }
 
+@keyframes shimmer {
+  from {
+    background-position: 100% 100%;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
 @media screen and (max-width: 580px) {
   .movies-list {
     grid-template-columns: 1fr;
@@ -202,5 +202,21 @@
 
   .movie .date {
     font-size: 1.4rem;
+  }
+
+  .fake-movie {
+    width: 250px;
+    height: calc(350px + 1.2rem + 1rem + 60px + 20px);
+  }
+
+  .fake-movie .poster {
+    width: 250px;
+    height: 350px;
+    margin-bottom: 1.2rem;
+  }
+
+  .fake-movie .title {
+    width: 250px;
+    margin-bottom: 1rem;
   }
 }
