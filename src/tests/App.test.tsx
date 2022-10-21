@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import '@testing-library/jest-dom'
 import App from 'App'
 
-test('renders learn react link', () => {
+test('should move to up when button is clicked', () => {
   render(<App />)
-  const linkElement = screen.getByText(/test/i)
-  expect(linkElement).toBeInTheDocument()
+
+  const button = screen.getByRole('button')
+  userEvent.click(button)
+
+  const scroll = window.scroll
+  expect(scroll).toHaveBeenCalledWith(0, 0)
 })

@@ -1,0 +1,72 @@
+.wrapper-navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 48px 12px;
+  border-right: solid thin var(--header-border);
+  background-color: var(--header-background);
+  z-index: 1100;
+}
+
+.navbar-logo {
+  width: 50px;
+  margin-bottom: 6rem;
+  overflow: visible;
+  cursor: pointer;
+  transition: filter 180ms ease;
+}
+
+.navbar-logo .casette {
+  animation-name: drive;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  transform-origin: 38% 47%;
+  will-change: transform;
+}
+
+.navbar-logo:hover {
+  filter: drop-shadow(0 0 6px var(--header-logo-shadow));
+}
+
+.navbar-logo:hover .casette {
+  animation-play-state: running;
+}
+
+@keyframes drive {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .wrapper-navbar {
+    gap: 1rem;
+    flex-flow: row nowrap;
+    justify-content: center;
+    height: 60px;
+    padding: 12px 24px;
+    backdrop-filter: blur(20px);
+    border-bottom: solid thin var(--header-border);
+  }
+
+  .navbar-logo {
+    position: absolute;
+    top: 12px;
+    left: 24px;
+    height: 35px;
+    margin-bottom: 0;
+  }
+
+  .navbar-logo .casette {
+    animation: drive 3s linear infinite;
+  }
+}

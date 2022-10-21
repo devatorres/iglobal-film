@@ -1,0 +1,57 @@
+.movies-search {
+  display: flex;
+  flex-flow: row nowrap;
+  transform: translateY(1.5rem);
+  width: 40%;
+  min-width: 450px;
+}
+
+@media screen and (max-width: 580px) {
+  .movies-search {
+    width: 100%;
+    min-width: unset;
+    transform: translateY(1.55rem);
+  }
+}
+
+.movies-search input {
+  appearance: none;
+  width: 100%;
+  height: 45px;
+  background-color: var(--search-background);
+  border: none;
+  box-shadow: inset 0 0 0 1px var(--header-border);
+  color: var(--font);
+  font-size: 1rem;
+  line-height: 45px;
+  font-weight: 400;
+  padding-left: 12px;
+  transition: box-shadow 180ms ease;
+}
+
+.movies-search input:focus {
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+}
+
+.movies-search input::placeholder {
+  font-size: 0.9rem;
+  color: var(--font-placeholder);
+}
+
+.movies-search button {
+  appearance: none;
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  background-color: transparent;
+  border: none;
+  color: var(--color-primary);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 180ms ease;
+}
+
+.movies-search button:hover {
+  background-color: var(--search-btn-hover);
+}
