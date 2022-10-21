@@ -27,7 +27,7 @@ const MoviesList: FC<MoviesListProps> = (props) => {
       {!movies
         ? DEFAULT_CASPER_LIST.map((index: number) => (
             <article key={index} className="fake-movie">
-              <div className="movie" />
+              <div className="poster" />
               <div className="title" />
             </article>
           ))
