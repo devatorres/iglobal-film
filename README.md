@@ -1,4 +1,4 @@
-# iGlobal Film
+# iGlobal Film [![Netlify Status](https://api.netlify.com/api/v1/badges/c4366c1d-f460-4081-956f-4b504d3cdfdf/deploy-status)](https://app.netlify.com/sites/silly-squirrel-fbbe1c/deploys)
 
 ![Tag](https://img.shields.io/badge/CSS3-f79400?style=flat-square)
 ![Tag](https://img.shields.io/badge/Context%20·%20Hooks-1b1b1b?style=flat-square)
