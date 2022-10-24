@@ -38,6 +38,26 @@ const Home: FC = () => {
     <div className="wrapper-home">
       <Helmet>
         <title>{t('home')} · iGlobal Film</title>
+        <meta
+          name="og:url"
+          content="https://silly-squirrel-fbbe1c.netlify.app"
+        />
+        <meta name="og:type" content="website" />
+        <meta name="og:site_name" content="iGlobal Film" />
+        <meta
+          name="og:title"
+          content="iGlobal Film | Mini-webapp sobre listado de películas usando ReactJS y TheMovieDB API"
+        />
+        <meta
+          name="og:description"
+          content="La prueba consiste en realizar una mini-webapp con un listado de películas con su buscador y formulario de puntaje."
+        />
+        <meta
+          name="og:image"
+          content="https://res.cloudinary.com/djc5s7mud/image/upload/v1666634214/iglobal_film_wussxu.png"
+        />
+        <meta name="og:image:width" content="768" />
+        <meta name="og:image:height" content="512" />
       </Helmet>
       <header>
         <figure className="preview backdrop">
