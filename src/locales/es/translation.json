@@ -21,7 +21,8 @@
   "results": "resultados de",
   "rated": "Mi lista",
   "ratedTitle": "Estas son las películas que has votado",
-  "noResults": "Ninguna película votada.",
+  "noRatedResults": "Ninguna película votada.",
+  "noSearchedResults": "Ninguna película disponible.",
   "originalLanguage": "Original idioma",
   "originalTitle": "Original título",
   "vote": "Votar"

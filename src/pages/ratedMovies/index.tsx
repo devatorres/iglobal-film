@@ -22,7 +22,7 @@ const RatedMovies: FC = () => {
           <p className="title">{t('ratedTitle')}</p>
         </header>
         <main>
-          <MoviesList movies={movies} />
+          <MoviesList />
         </main>
       </div>
     )
