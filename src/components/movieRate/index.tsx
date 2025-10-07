@@ -1,11 +1,11 @@
-import { FC, Suspense, lazy } from 'react'
+import { type FC, Suspense, lazy } from 'react'
 import './styles.css'
 
 interface MovieRateProps {
   movieId: number
 }
 
-const RateComponent = lazy(() => import('components/movieRate/rateComponent'))
+const RateComponent = lazy(() => import('@/components/movieRate/rateComponent'))
 
 const MovieRate: FC<MovieRateProps> = (props) => {
   const { movieId } = props

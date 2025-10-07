@@ -1,14 +1,14 @@
-import { FC, SetStateAction, useState } from 'react'
+import { type FC, type SetStateAction, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { MY_LIST_LINK } from 'constants/router'
-import useUser from 'hooks/useUser'
-import Logo from 'components/navBar/logo'
-import IconButton from 'components/iconButton'
-import LanguageSelector from 'components/languageSelector'
-import ThemeSelector from 'components/themeSelector'
-import GuestSessionModal from 'components/guestSessionModal'
-import Notification from 'components/notification'
+import { MY_LIST_LINK } from '@/constants/router'
+import useUser from '@/hooks/useUser'
+import Logo from '@/components/navBar/logo'
+import IconButton from '@/components/iconButton'
+import LanguageSelector from '@/components/languageSelector'
+import ThemeSelector from '@/components/themeSelector'
+import GuestSessionModal from '@/components/guestSessionModal'
+import Notification from '@/components/notification'
 import LanguageIcon from '@mui/icons-material/Language'
 import ThemeIcon from '@mui/icons-material/InvertColors'
 import UserIcon from '@mui/icons-material/PersonOutline'
@@ -32,15 +32,11 @@ const NavBar: FC = () => {
     navigate('/')
   }
 
-  const handleOpenLanguageList = (event: {
-    currentTarget: SetStateAction<null>
-  }) => {
+  const handleOpenLanguageList = (event: { currentTarget: SetStateAction<null> }) => {
     setAnchorLanguage(event.currentTarget)
   }
 
-  const handleOpenThemeList = (event: {
-    currentTarget: SetStateAction<null>
-  }) => {
+  const handleOpenThemeList = (event: { currentTarget: SetStateAction<null> }) => {
     setAnchorTheme(event.currentTarget)
   }
 
@@ -63,27 +59,23 @@ const NavBar: FC = () => {
   }
 
   return (
-    <nav className="wrapper-navbar">
+    <nav className='wrapper-navbar'>
       <Logo click={handleGoDashboard} />
       <IconButton
         id={idLanguage}
         title={t('changeLanguage')}
-        click={handleOpenLanguageList}>
+        click={handleOpenLanguageList}
+      >
         <LanguageIcon />
       </IconButton>
-      <IconButton
-        id={idTheme}
-        title={t('changeTheme')}
-        click={handleOpenThemeList}>
+      <IconButton id={idTheme} title={t('changeTheme')} click={handleOpenThemeList}>
         <ThemeIcon />
       </IconButton>
       <IconButton click={handleGoMyList} title={t('goMyList')}>
         <ListIcon />
       </IconButton>
       {!user && (
-        <IconButton
-          click={handleCreateGuestSession}
-          title={t('createGuestSession')}>
+        <IconButton click={handleCreateGuestSession} title={t('createGuestSession')}>
           <UserIcon />
         </IconButton>
       )}

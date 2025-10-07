@@ -1,10 +1,5 @@
-import { FC } from 'react'
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle
-} from '@mui/material'
+import { type FC } from 'react'
+import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import './styles.css'
 
@@ -29,30 +24,31 @@ const GuestSessionModal: FC<GuestSessionModalProps> = (props) => {
 
   return (
     <Dialog
-      className="guest-session-modal"
+      className='guest-session-modal'
       open={open}
       onClose={handleClose}
-      aria-labelledby="guest-session-modal"
-      aria-describedby="say-user-can-create-guest-session">
-      <DialogTitle id="guest-session-modal" className="title reset-skew">
+      aria-labelledby='guest-session-modal'
+      aria-describedby='say-user-can-create-guest-session'
+    >
+      <DialogTitle id='guest-session-modal' className='title reset-skew'>
         {t('guestSessionModal.title')}
       </DialogTitle>
-      <DialogContent className="description reset-skew">
-        <p id="say-user-can-create-guest-session">
-          {t('guestSessionModal.description')}
-        </p>
+      <DialogContent className='description reset-skew'>
+        <p id='say-user-can-create-guest-session'>{t('guestSessionModal.description')}</p>
       </DialogContent>
-      <DialogActions className="actions reset-skew">
+      <DialogActions className='actions reset-skew'>
         <button
-          className="btn-action"
-          aria-describedby="create-session"
-          onClick={handleCreateSession}>
+          className='btn-action'
+          aria-describedby='create-session'
+          onClick={handleCreateSession}
+        >
           {t('createSession')}
         </button>
         <button
-          className="btn-cancel"
-          aria-describedby="create-session"
-          onClick={handleClose}>
+          className='btn-cancel'
+          aria-describedby='create-session'
+          onClick={handleClose}
+        >
           {t('noThanks')}
         </button>
       </DialogActions>

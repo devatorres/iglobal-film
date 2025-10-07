@@ -1,113 +1,113 @@
 .guest-session-modal {
-  transition: none !important;
-  backdrop-filter: blur(2px);
+	transition: none !important;
+	backdrop-filter: blur(2px);
 }
 
 .guest-session-modal :is(.MuiDialog-container, .MuiBackdrop-root) {
-  transition: none !important;
+	transition: none !important;
 }
 
 .guest-session-modal .MuiDialog-paper {
-  max-width: unset !important;
-  max-height: unset !important;
-  transition: none !important;
-  align-items: center;
-  width: 100%;
-  padding-block: 4rem;
-  margin: 0;
-  border-radius: 0;
-  background: radial-gradient(var(--modal-background-dots) 2px, transparent 2px),
-    radial-gradient(var(--modal-background-dots) 2px, transparent 2px);
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
-  background-color: var(--modal-background);
-  transform: skewY(2deg);
-  overflow: hidden;
+	max-width: unset !important;
+	max-height: unset !important;
+	transition: none !important;
+	align-items: center;
+	width: 100%;
+	padding-block: 4rem;
+	margin: 0;
+	border-radius: 0;
+	background: radial-gradient(var(--modal-background-dots) 2px, transparent 2px),
+		radial-gradient(var(--modal-background-dots) 2px, transparent 2px);
+	background-size: 20px 20px;
+	background-position: 0 0, 10px 10px;
+	background-color: var(--modal-background);
+	transform: skewY(2deg);
+	overflow: hidden;
 }
 
 .guest-session-modal .reset-skew {
-  transform: skewY(-2deg);
+	transform: skewY(-2deg);
 }
 
 .guest-session-modal .title {
-  padding: 0;
-  text-align: center;
-  line-height: 1.5;
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 700;
-  color: var(--font);
-  margin-bottom: 0.5rem;
+	padding: 0;
+	text-align: center;
+	line-height: 1.5;
+	font-size: clamp(28px, 4vw, 42px);
+	font-weight: 700;
+	color: var(--font);
+	margin-bottom: 0.5rem;
 }
 
 .guest-session-modal .description {
-  padding-block: 0.5rem;
-  text-align: center;
-  max-width: 500px;
-  line-height: 1;
-  font-size: clamp(16px, 2vw, 18px);
-  font-weight: 400;
-  color: var(--font);
-  margin-bottom: 2rem;
+	padding-block: 0.5rem;
+	text-align: center;
+	max-width: 500px;
+	line-height: 1;
+	font-size: clamp(16px, 2vw, 18px);
+	font-weight: 400;
+	color: var(--font);
+	margin-bottom: 2rem;
 }
 
 .guest-session-modal .actions {
-  padding: 0;
+	padding: 0;
 }
 
 .guest-session-modal .btn-action {
-  margin-inline: 1vw;
-  appearance: none;
-  width: 192px;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  border: none;
-  background-color: var(--color-secondary);
-  color: #ffffff;
-  font-size: clamp(14px, 2vw, 16px);
-  letter-spacing: 0.6px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 180ms ease;
+	margin-inline: 1vw;
+	appearance: none;
+	width: 192px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	border: 0;
+	background-color: var(--color-secondary);
+	color: #ffffff;
+	font-size: clamp(14px, 2vw, 16px);
+	letter-spacing: 0.6px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background-color 180ms ease;
 }
 
 .guest-session-modal .btn-action:hover {
-  background-color: var(--color-secondary-hover);
+	background-color: var(--color-secondary-hover);
 }
 
 .guest-session-modal .btn-cancel {
-  margin-left: 1vw !important;
-  margin-inline: 1vw;
-  appearance: none;
-  width: 192px;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  border: none;
-  box-shadow: inset 0 0 0 2px var(--color-primary);
-  background-color: var(--modal-btn-secondary);
-  color: var(--font);
-  font-size: clamp(14px, 2vw, 16px);
-  letter-spacing: 0.6px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 180ms ease;
+	margin-left: 1vw !important;
+	margin-inline: 1vw;
+	appearance: none;
+	width: 192px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	border: 0;
+	box-shadow: inset 0 0 0 2px var(--color-primary);
+	background-color: var(--modal-btn-secondary);
+	color: var(--font);
+	font-size: clamp(14px, 2vw, 16px);
+	letter-spacing: 0.6px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background-color 180ms ease;
 }
 
 .guest-session-modal .btn-cancel:hover {
-  background-color: var(--modal-btn-secondary-hover);
+	background-color: var(--modal-btn-secondary-hover);
 }
 
 @media screen and (max-width: 560px) {
-  .guest-session-modal .btn-action {
-    width: 140px;
-    letter-spacing: initial;
-    font-weight: 400;
-  }
+	.guest-session-modal .btn-action {
+		width: 140px;
+		letter-spacing: initial;
+		font-weight: 400;
+	}
 
-  .guest-session-modal .btn-cancel {
-    width: 140px;
-    letter-spacing: initial;
-    font-weight: 400;
-  }
+	.guest-session-modal .btn-cancel {
+		width: 140px;
+		letter-spacing: initial;
+		font-weight: 400;
+	}
 }

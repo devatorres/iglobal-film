@@ -1,3 +1,3 @@
-export const THEME: string = 'ipglobalTestTheme'
-export const LANGUAGE: string = 'ipglobalTestLanguage'
-export const SESSION: string = 'ipglobalTestSession'
+export const THEME: string = 'iglobalTestTheme'
+export const LANGUAGE: string = 'iglobalTestLanguage'
+export const SESSION: string = 'iglobalTestSession'

@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { searchLink } from 'constants/router'
-import useSearch from 'hooks/useSearch'
+import { searchLink } from '@/constants/router'
+import useSearch from '@/hooks/useSearch'
 import SearchIcon from '@mui/icons-material/Search'
 import './styles.css'
 
@@ -32,14 +32,14 @@ const MoviesSearch: FC<MoviesSearchProps> = (props) => {
   }
 
   return (
-    <form className="movies-search" onSubmit={handleSubmit}>
+    <form className='movies-search' onSubmit={handleSubmit}>
       <input
-        type="text"
+        type='text'
         placeholder={t('searchBarPlaceholder')}
         value={keyword}
         onChange={handleChange}
       />
-      <button type="submit">
+      <button type='submit'>
         <SearchIcon />
       </button>
     </form>

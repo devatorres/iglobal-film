@@ -1,20 +1,20 @@
 .wrapper-not-found {
-  display: grid;
-  place-items: center;
-  width: 100%;
-  min-height: 100vh;
-  padding: 24px;
+	display: grid;
+	place-items: center;
+	width: 100%;
+	min-height: 100vh;
+	padding: 24px;
 
-  background: radial-gradient(var(--modal-background-dots) 2px, transparent 2px),
-    radial-gradient(var(--modal-background-dots) 2px, transparent 2px);
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
+	background: radial-gradient(var(--modal-background-dots) 2px, transparent 2px),
+		radial-gradient(var(--modal-background-dots) 2px, transparent 2px);
+	background-size: 20px 20px;
+	background-position: 0 0, 10px 10px;
 }
 
 .wrapper-not-found .title {
-  font-size: clamp(100px, 15vw, 200px);
-  text-shadow: -4px 4px 12px rgba(36, 236, 230, 0.8),
-    4px -4px 14px rgba(246, 42, 81, 0.8);
-  font-weight: 700;
-  color: var(--font);
+	font-size: clamp(100px, 15vw, 200px);
+	text-shadow: -4px 4px 12px rgba(36, 236, 230, 0.8),
+		4px -4px 14px rgba(246, 42, 81, 0.8);
+	font-weight: 700;
+	color: var(--font);
 }

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC, type JSX } from 'react'
 import './styles.css'
 
 type IconButtonProps = {
@@ -12,11 +12,7 @@ const IconButton: FC<IconButtonProps> = (props) => {
   const { id = undefined, title = undefined, click, children } = props
 
   return (
-    <button
-      className="icon-button"
-      aria-describedby={id}
-      title={title}
-      onClick={click}>
+    <button className='icon-button' aria-describedby={id} title={title} onClick={click}>
       {children}
     </button>
   )

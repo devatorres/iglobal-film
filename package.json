@@ -1,22 +1,23 @@
 {
-  "name": "ipglobal-test",
-  "description": "La prueba consiste en realizar una mini-webapp con un listado de películas con su buscador y formulario de puntaje.",
+  "name": "iglobal-film",
+  "description": "La prueba consiste en realizar una mini-viteapp con un listado de películas con su buscador y formulario de puntaje.",
   "keywords": [
     "CSS",
     "Context Hooks",
     "Helmet",
     "i18next",
     "MUI",
-    "npm",
+    "yarn",
     "Prettier",
     "React",
     "Rellax",
     "ThemovieDB",
     "TypeScript",
-    "WebApp"
+    "Vite"
   ],
-  "version": "2.0.5",
-  "license": "MIT License",
+  "private": true,
+  "version": "25.09.29",
+  "type": "module",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -30,53 +31,65 @@
     ]
   },
   "sideEffects": [
-    "./src/services/i18n.ts"
+    "./src/utils/i18n.ts"
   ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --quiet --fix",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@emotion/react": "11.10.4",
-    "@emotion/styled": "11.10.4",
-    "@mui/icons-material": "5.10.9",
-    "@mui/material": "5.10.9",
-    "i18next": "21.10.0",
-    "just-debounce-it": "3.1.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-helmet": "6.1.0",
-    "react-i18next": "11.18.6",
-    "react-router-dom": "6.4.2",
-    "react-scripts": "5.0.1",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.1",
+    "@mui/icons-material": "7.3.4",
+    "@mui/material": "7.3.4",
+    "globals": "16.4.0",
+    "i18next": "25.5.3",
+    "just-debounce-it": "3.2.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-helmet-async": "2.0.5",
+    "react-i18next": "16.0.0",
+    "react-router-dom": "7.9.3",
     "rellax": "1.12.1",
     "util": "0.12.5"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "5.16.5",
-    "@testing-library/react": "13.4.0",
-    "@testing-library/user-event": "14.4.3",
-    "@types/jest": "29.1.2",
+    "@eslint/js": "9.37.0",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.0",
+    "@testing-library/user-event": "14.6.1",
     "@types/i18next": "13.0.0",
-    "@types/node": "18.11.0",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
-    "@types/react-helmet": "6.1.5",
+    "@types/jest": "30.0.0",
+    "@types/node": "24.7.0",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
     "@types/react-i18next": "8.1.0",
-    "@types/rellax": "1.7.4",
-    "eslint": "8.25.0",
-    "prettier": "2.7.1",
-    "typescript": "4.8.4"
+    "@types/rellax": "1.7.7",
+    "@typescript-eslint/eslint-plugin": "8.45.0",
+    "@typescript-eslint/parser": "8.45.0",
+    "@vitejs/plugin-react-swc": "4.1.0",
+    "eslint": "9.37.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "6.1.1",
+    "eslint-plugin-react-refresh": "0.4.23",
+    "prettier": "3.6.2",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "8.45.0",
+    "vite": "7.1.9",
+    "vite-plugin-checker": "0.11.0"
   },
   "engines": {
-    "node": ">=16",
-    "npm": ">=8"
+    "node": ">=20",
+    "yarn": ">=1"
   },
   "eslintConfig": {
     "extends": [
       "react-app"
     ]
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   }
 }

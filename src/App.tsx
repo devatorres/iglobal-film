@@ -1,15 +1,15 @@
-import { FC, lazy, Suspense } from 'react'
+import { type FC, lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { MoviesContextProvider } from 'contexts/moviesContext'
-import NavBar from 'components/navBar'
-import ProtectedRoute from 'components/protectedRoute'
-import ScrollToTop from 'components/scrollToTop'
-import SearchMovies from 'pages/searchMovies'
-import DetailMovie from 'pages/detailMovie'
-import RatedMovies from 'pages/ratedMovies'
-import NotFound from 'pages/notFound'
+import { MoviesContextProvider } from '@/contexts/moviesContext'
+import NavBar from '@/components/navBar'
+import ProtectedRoute from '@/components/protectedRoute'
+import ScrollToTop from '@/components/scrollToTop'
+import SearchMovies from '@/pages/searchMovies'
+import DetailMovie from '@/pages/detailMovie'
+import RatedMovies from '@/pages/ratedMovies'
+import NotFound from '@/pages/notFound'
 
-const Home = lazy(() => import('pages/home'))
+const Home = lazy(() => import('@/pages/home'))
 
 //? El Context de las peliculas solo lo leen los Route
 const App: FC = () => {

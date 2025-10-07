@@ -1,6 +1,7 @@
 {
-  "short_name": "ipglobal-test",
-  "name": "ipglobal-test",
+  "background_color": "#0a1929",
+  "description": "La prueba consiste en realizar una mini-viteapp con un listado de películas con su buscador y formulario de puntaje.",
+  "display": "standalone",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,7 +19,9 @@
       "sizes": "512x512"
     }
   ],
+  "name": "iglobal-film",
+  "orientation": "portrait",
+  "short_name": "iglobal-film",
   "start_url": ".",
-  "display": "standalone",
   "theme_color": "#0a1929"
 }

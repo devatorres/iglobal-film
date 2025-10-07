@@ -4,22 +4,22 @@
 ![Tag](https://img.shields.io/badge/Context%20·%20Hooks-1b1b1b?style=flat-square)
 ![Tag](https://img.shields.io/badge/Helmet-fafafa?style=flat-square)
 ![Tag](https://img.shields.io/badge/i18next-26a69a?style=flat-square)
-![Tag](https://img.shields.io/badge/MUI%205-007bf7?style=flat-square)
-![Tag](https://img.shields.io/badge/npm%208.1.2-c53635?style=flat-square)
+![Tag](https://img.shields.io/badge/MUI%207-007bf7?style=flat-square)
+![Tag](https://img.shields.io/badge/yarn%201.22.22-c53635?style=flat-square)
 ![Tag](https://img.shields.io/badge/Prettier-c693c6?style=flat-square)
-![Tag](https://img.shields.io/badge/React%2018-61d9fb?style=flat-square)
+![Tag](https://img.shields.io/badge/React%2019-61d9fb?style=flat-square)
 ![Tag](https://img.shields.io/badge/Rellax-00e9c3?style=flat-square)
 ![Tag](https://img.shields.io/badge/TMDB-2cbbd1?style=flat-square)
-![Tag](https://img.shields.io/badge/TypeScript%204-2f74c0?style=flat-square)
-![Tag](https://img.shields.io/badge/WebApp-fbbf47?style=flat-square)
+![Tag](https://img.shields.io/badge/TypeScript%205-2f74c0?style=flat-square)
+![Tag](https://img.shields.io/badge/Vite-fbbf47?style=flat-square)
 
 ## 📋 Descripción
 
-La prueba consiste en realizar una mini-webapp con un listado de películas con su buscador y formulario de puntaje.
+La prueba consiste en realizar una mini-viteapp con un listado de películas con su buscador y formulario de puntaje.
 
 ## 🔨 Cómo arrancarlo
 
-Hay una posibilidad de ver una preview desplegada en _Netlify_ [https://creative-smakager-190ad7.netlify.app/](https://creative-smakager-190ad7.netlify.app/). Pero como programador seguro que llama más la atención usar un poco de npm 😉. Es tan sencillo como clonar el proyecto `git clone <url>`, instalar las dependencias `npm install` y ejecutarlo `npm start`. (Cuidado, no tienes visible el API_KEY, ya que está en un .env)
+Hay una posibilidad de ver una preview desplegada en _Netlify_ [https://creative-smakager-190ad7.netlify.app/](https://creative-smakager-190ad7.netlify.app/). Pero como programador seguro que llama más la atención usar un poco de yarn 😉. Es tan sencillo como clonar el proyecto `git clone <url>`, instalar las dependencias `yarn install` y ejecutarlo `yarn dev`. (Cuidado, no tienes visible el API_KEY, ya que está en un .env)
 
 ## 📚 El Por qué de algunas cosas
 
@@ -28,7 +28,7 @@ Hay una posibilidad de ver una preview desplegada en _Netlify_ [https://creative
 - He incluido mi propio controlador (_Context_ + _Hook_) sobre el selector de tema, en donde por defecto se pone el tema oscuro (y no aparece el localStorage), y si lo cambias a otro, se guarda en el localStorage para saber cual es la preferencia del usuario.
 - Lo mismo pasa con el control del idioma pero esta vez mezclo código propietario con la librería **i18next** y **react-i18next**. Las llamadas a la API se adaptan al idioma seleccionado y trae la información correctamente.
 - Añadí servicios sencillos como por ejemplo el formateo de las fechas para visualizarlo mejor.
-- Mejoré el SEO con el uso de la librería **react-helmet** en donde puedo controlar los _Title_ dependiendo de en cual página entre.
+- Mejoré el SEO con el uso de la librería **react-helmet-async** en donde puedo controlar los _Title_ dependiendo de en cual página entre.
 - Añadí la librería **just-debounce-it** para controlar el número de peticiones. El buscador de películas contiene un _Infinite Loading_ y cuando llegas abajo puede pasar que alguien haga un gesto extraño con el scroll y solicitar varias búsquedas a más películas. Por ello si me llegan 20 peticiones, la librería lo ignora y solo manda una.
 - Gracias a la librería **Rellax** puedo hacer un effecto _Parallax_ al logotipo central muy vistoso.
 - Con **MUI**, las películas contienen una _"LinearProgress"_ modificada para ser usada como puntuación. Con la variante **determinate** puedes añadir un valor en concreto, y el color se adapta a la puntuación porque puse un array que contiene los className correspondientes dependiendo del rango de valores.

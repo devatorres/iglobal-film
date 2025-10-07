@@ -1,11 +1,11 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { movieLink } from 'constants/router'
+import { movieLink } from '@/constants/router'
 import { LinearProgress } from '@mui/material'
-import { API_IMAGE_URL } from 'constants/dbApi'
-import MovieParams from 'models/movieModel'
-import formatDate from 'utils/formatDate'
-import NotFound from 'assets/images/not_found.png'
+import { API_IMAGE_URL } from '@/constants/dbApi'
+import type MovieParams from '@/models/movieModel'
+import formatDate from '@/utils/formatDate'
+import NotFound from '@/assets/images/not_found.png'
 import './styles.css'
 
 interface MovieItemProps {
@@ -35,15 +35,15 @@ const MovieItem: FC<MovieItemProps> = (props) => {
   }
 
   return (
-    <article className="movie">
-      <figure className="poster" onClick={handleSelectMovie(movie.id)}>
+    <article data-id={movie.id} className='movie'>
+      <figure className='poster' onClick={handleSelectMovie(movie.id)}>
         <img
           src={
             movie.poster_path === null
               ? NotFound
               : `${API_IMAGE_URL}/${movie.poster_path}`
           }
-          loading="lazy"
+          loading='lazy'
           alt={movie.title}
         />
         <span className={`percent ${getClassName()}`}>{`${(
@@ -51,14 +51,14 @@ const MovieItem: FC<MovieItemProps> = (props) => {
         ).toFixed(0)}%`}</span>
         <LinearProgress
           className={`average ${getClassName()}`}
-          variant="determinate"
+          variant='determinate'
           value={movie.vote_average * 10}
         />
       </figure>
-      <div className="title" onClick={handleSelectMovie(movie.id)}>
+      <div className='title' onClick={handleSelectMovie(movie.id)}>
         {movie.title}
       </div>
-      <span className="date">{formatDate(new Date(movie.release_date))}</span>
+      <span className='date'>{formatDate(new Date(movie.release_date))}</span>
     </article>
   )
 }

@@ -1,6 +1,6 @@
-import { createContext, useReducer, useCallback } from 'react'
-import { ContextProviderProps } from 'contexts/globalTypes'
-import MovieParams from 'models/movieModel'
+import { createContext, useCallback, useReducer } from 'react'
+import { type ContextProviderProps } from '@/contexts/globalTypes'
+import type MovieParams from '@/models/movieModel'
 
 interface MoviesContextInterface {
   movies: MovieParams[]
@@ -26,26 +26,26 @@ const ACTIONS = {
   UPDATE_MOVIES: 'update_movies',
   UPDATE_MOVIES_LOADING: 'update_movies_loading',
   UPDATE_MOVIE_LOADING: 'update_movie_loading',
-  UPDATE_MOVIE_ERROR: 'update_movie_error'
+  UPDATE_MOVIE_ERROR: 'update_movie_error',
 }
 
 const ACTIONS_REDUCERS = {
   [ACTIONS.UPDATE_MOVIES]: (state: State, action: Actions) => ({
     ...state,
-    movies: action.payload
+    movies: action.payload,
   }),
   [ACTIONS.UPDATE_MOVIES_LOADING]: (state: State, action: Actions) => ({
     ...state,
-    moviesIsLoading: action.payload
+    moviesIsLoading: action.payload,
   }),
   [ACTIONS.UPDATE_MOVIE_LOADING]: (state: State, action: Actions) => ({
     ...state,
-    movieIsLoading: action.payload
+    movieIsLoading: action.payload,
   }),
   [ACTIONS.UPDATE_MOVIE_ERROR]: (state: State, action: Actions) => ({
     ...state,
-    movieIsError: action.payload
-  })
+    movieIsError: action.payload,
+  }),
 }
 
 const reducer = (state: State, action: Actions) => {
@@ -57,12 +57,10 @@ const initialArg = {
   movies: [],
   moviesIsLoading: false,
   movieIsLoading: false,
-  movieIsError: false
+  movieIsError: false,
 }
 
-const MoviesContext = createContext<MoviesContextInterface | undefined>(
-  undefined
-)
+const MoviesContext = createContext<MoviesContextInterface | undefined>(undefined)
 
 export const MoviesContextProvider = ({ children }: ContextProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initialArg)
@@ -109,8 +107,9 @@ export const MoviesContextProvider = ({ children }: ContextProviderProps) => {
         movieIsLoading: state.movieIsLoading,
         updateMovieIsLoading,
         movieIsError: state.movieIsError,
-        updateMovieIsError
-      }}>
+        updateMovieIsError,
+      }}
+    >
       {children}
     </MoviesContext.Provider>
   )

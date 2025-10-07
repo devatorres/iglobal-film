@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC, type JSX } from 'react'
 import './styles.css'
 
 type PopOverItemProps = {
@@ -18,15 +18,16 @@ const PopOverItem: FC<PopOverItemProps> = ({
   stylename,
   icon,
   current,
-  click
+  click,
 }) => (
   <article
     key={code}
     className={`item ${stylename} ${code === current && 'select'}`}
-    onClick={click(code)}>
+    onClick={click(code)}
+  >
     {icon}
-    <span className="name">{name}</span>
-    <span className="alt">{alt}</span>
+    <span className='name'>{name}</span>
+    <span className='alt'>{alt}</span>
   </article>
 )
 

@@ -1,11 +1,11 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { CODE_ES } from 'constants/config'
-import { LANGUAGE_LIST } from 'components/languageSelector/languageList'
-import { LANGUAGE } from 'constants/localStorage'
-import { DEFAULT_LANGUAGE } from 'constants/default'
-import PopOver from 'components/popOver'
-import PopOverItem from 'components/popOver/popOverItem'
+import { CODE_ES } from '@/constants/config'
+import { LANGUAGE_LIST } from '@/components/languageSelector/languageList'
+import { LANGUAGE } from '@/constants/localStorage'
+import { DEFAULT_LANGUAGE } from '@/constants/default'
+import PopOver from '@/components/popOver'
+import PopOverItem from '@/components/popOver/popOverItem'
 
 type LanguageSelectorProps = {
   id?: string | undefined
@@ -18,7 +18,7 @@ const LanguageSelector: FC<LanguageSelectorProps> = ({
   id,
   open,
   anchorEl,
-  setAnchorEl
+  setAnchorEl,
 }) => {
   const { i18n } = useTranslation()
 
@@ -37,15 +37,11 @@ const LanguageSelector: FC<LanguageSelectorProps> = ({
   const currentLanguage: string = i18n.language || window.localStorage[LANGUAGE]
 
   return (
-    <PopOver
-      id={id}
-      open={open}
-      anchorEl={anchorEl}
-      close={handleCloseLanguageList}>
+    <PopOver id={id} open={open} anchorEl={anchorEl} close={handleCloseLanguageList}>
       {LANGUAGE_LIST.map((item: any) => (
         <PopOverItem
           key={item.code}
-          stylename="lng"
+          stylename='lng'
           current={currentLanguage ?? CODE_ES}
           click={handleChangeLanguage}
           {...item}

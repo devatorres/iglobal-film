@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect } from 'react'
+import { type FC, useRef, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import ArrowIcon from '@mui/icons-material/ArrowUpward'
@@ -12,8 +12,7 @@ const ScrollToTop: FC = () => {
   useEffect(() => {
     window.onscroll = () => {
       if (scrollToTopRef.current) {
-        scrollToTopRef.current.style.display =
-          window.scrollY > 200 ? 'grid' : 'none'
+        scrollToTopRef.current.style.display = window.scrollY > 200 ? 'grid' : 'none'
       }
     }
   }, [])
@@ -23,17 +22,18 @@ const ScrollToTop: FC = () => {
   }, [pathname])
 
   const handleScrollToTop = () => {
-    window.scroll({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
     <button
-      className="scroll-to-top"
-      aria-label="scroll-to-top"
+      className='scroll-to-top'
+      aria-label='scroll-to-top'
       title={t('scrollToTop')}
       onClick={handleScrollToTop}
-      ref={scrollToTopRef}>
-      <div className="animator">
+      ref={scrollToTopRef}
+    >
+      <div className='animator'>
         <ArrowIcon />
       </div>
     </button>

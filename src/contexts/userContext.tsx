@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react'
-import { ContextProviderProps } from 'contexts/globalTypes'
-import { SESSION } from 'constants/localStorage'
-import UserParams from 'models/userModel'
+import { type ContextProviderProps } from '@/contexts/globalTypes'
+import { SESSION } from '@/constants/localStorage'
+import type UserParams from '@/models/userModel'
 
 interface UserContextInterface {
   user: UserParams | undefined
@@ -15,14 +15,13 @@ const initialState = (): UserParams | undefined => {
 
 const UserContext = createContext<UserContextInterface | undefined>(undefined)
 
+/**
+ * Manejador de la informacion del usuario
+ */
 export const UserContextProvider = ({ children }: ContextProviderProps) => {
   const [user, setUser] = useState(initialState())
 
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  )
+  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
 }
 
 export default UserContext

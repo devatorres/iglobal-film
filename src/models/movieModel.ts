@@ -16,4 +16,4 @@ interface MovieParams {
   vote_count: number
 }
 
-export default MovieParams
+export type { MovieParams as default }

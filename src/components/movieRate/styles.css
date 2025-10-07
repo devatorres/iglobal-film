@@ -1,19 +1,19 @@
 .rate {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 1rem;
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 1rem;
 }
 
 .rate button {
-  appearance: none;
-  padding: 2px 12px;
-  background-color: var(--color-secondary);
-  border: none;
-  color: #ffffff;
-  cursor: pointer;
-  transition: background-color 250ms ease;
+	appearance: none;
+	padding: 2px 12px;
+	background-color: var(--color-secondary);
+	border: 0;
+	color: #ffffff;
+	cursor: pointer;
+	transition: background-color 250ms ease;
 }
 
 .rate button:hover {
-  background-color: var(--color-secondary-hover);
+	background-color: var(--color-secondary-hover);
 }

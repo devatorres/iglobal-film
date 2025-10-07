@@ -1,7 +1,7 @@
 import { createContext, useEffect, useReducer } from 'react'
-import { THEME } from 'constants/localStorage'
-import { LIGHT, DARK, SYSTEM, DATA_THEME } from 'constants/theme'
-import { ContextProviderProps } from 'contexts/globalTypes'
+import { THEME } from '@/constants/localStorage'
+import { LIGHT, DARK, SYSTEM, DATA_THEME } from '@/constants/theme'
+import { type ContextProviderProps } from '@/contexts/globalTypes'
 
 type State = { theme: typeof LIGHT | typeof DARK | typeof SYSTEM }
 type Actions = { type: string }
@@ -32,7 +32,7 @@ const ACTIONS_REDUCERS: Reducers = {
     window.localStorage.setItem(THEME, SYSTEM)
     window.document.documentElement.setAttribute(DATA_THEME, SYSTEM)
     return { ...state, theme: SYSTEM }
-  }
+  },
 }
 
 const reducer = (state: State, action: Actions) => {
@@ -47,13 +47,16 @@ const initialState = () => {
 
 const ThemeContext = createContext<ThemeContextInterface | undefined>(undefined)
 
+/**
+ * Manejador del esquema de color del programa
+ */
 export const ThemeContextProvider = ({ children }: ContextProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initialState())
 
   useEffect(() => {
     if (state.theme !== DARK)
       window.document.documentElement.setAttribute(DATA_THEME, state.theme)
-  }, [state])
+  }, [state.theme])
 
   const changeTheme = (theme: string) => {
     dispatch({ type: theme })

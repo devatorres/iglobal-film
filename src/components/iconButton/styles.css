@@ -1,26 +1,26 @@
 .icon-button {
-  appearance: none;
-  width: 30px;
-  height: 30px;
-  border: none;
-  margin-bottom: 2rem;
-  background-color: transparent;
-  cursor: pointer;
-  transition: filter 180ms ease;
+	appearance: none;
+	width: 30px;
+	height: 30px;
+	border: 0;
+	margin-bottom: 2rem;
+	background-color: transparent;
+	cursor: pointer;
+	transition: filter 180ms ease;
 }
 
 .icon-button:hover {
-  filter: drop-shadow(0 0 6px var(--btn-shadow));
+	filter: drop-shadow(0 0 6px var(--btn-shadow));
 }
 
 .icon-button svg {
-  width: 30px;
-  height: 30px;
-  color: var(--btn-color);
+	width: 30px;
+	height: 30px;
+	color: var(--btn-color);
 }
 
 @media screen and (max-width: 580px) {
-  .icon-button {
-    margin-bottom: 0;
-  }
+	.icon-button {
+		margin-bottom: 0;
+	}
 }

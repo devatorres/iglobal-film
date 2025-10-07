@@ -46,7 +46,13 @@ div[id='root'] {
     display: block;
   }
 
-  :is(.wrapper-home, .wrapper-detail, .wrapper-not-found, .wrapper-rated, .wrapper-search) {
+  :is(
+    .wrapper-home,
+    .wrapper-detail,
+    .wrapper-not-found,
+    .wrapper-rated,
+    .wrapper-search
+  ) {
     min-height: calc(100vh - 60px);
   }
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { DEFAULT_RATE } from 'constants/default'
-import rateMovie from 'services/rateMovie'
+import { DEFAULT_RATE } from '@/constants/default'
+import rateMovie from '@/services/rateMovie'
 import useUser from './useUser'
 
 const labels: any = {
@@ -13,29 +13,33 @@ const labels: any = {
   3.5: 7,
   4: 8,
   4.5: 9,
-  5: 10
+  5: 10,
 }
 
 const useRate = ({ movieId }: { movieId: number }) => {
   const [value, setValue] = useState(DEFAULT_RATE)
   const { user } = useUser()
 
-  const ratedMovie = () => {
-    const errorResponse = (error: Error): void => {
+  const ratedMovie = async () => {
+    const errorResponse = (_error: unknown): void => {
       //! Se puede añadir los avisos de error que sean necesarios
     }
 
-    return rateMovie({
-      movieId,
-      value: labels[value],
-      guestSession: user.guest_session_id
-    }).catch(errorResponse)
+    try {
+      return await rateMovie({
+        movieId,
+        value: labels[value],
+        guestSession: user.guest_session_id,
+      })
+    } catch (error) {
+      return errorResponse(error)
+    }
   }
 
   return {
     value,
     setValue,
-    rateMovie: ratedMovie
+    rateMovie: ratedMovie,
   } as const
 }
 

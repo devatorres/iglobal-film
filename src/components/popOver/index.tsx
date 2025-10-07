@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC, type JSX } from 'react'
 import { Popover } from '@mui/material'
 import './styles.css'
 
@@ -20,9 +20,10 @@ const PopOver: FC<PopOverProps> = ({ id, open, anchorEl, close, children }) => {
       elevation={0}
       anchorOrigin={{
         vertical: 'center',
-        horizontal: 'right'
-      }}>
-      <section className="popover-list">{children}</section>
+        horizontal: 'right',
+      }}
+    >
+      <section className='popover-list'>{children}</section>
     </Popover>
   )
 }

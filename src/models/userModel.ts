@@ -5,4 +5,4 @@ interface UserParams {
   rated_movies_id: number[]
 }
 
-export default UserParams
+export type { UserParams as default }

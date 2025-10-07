@@ -1,10 +1,10 @@
-import { FC } from 'react'
-import { Helmet } from 'react-helmet'
-import { LIST } from 'constants/hooks'
+import { type FC } from 'react'
+import { Helmet } from 'react-helmet-async'
+import { LIST } from '@/constants/hooks'
 import { useTranslation } from 'react-i18next'
-import MoviesList from 'components/moviesList'
-import MoviesSearch from 'components/moviesSearch'
-import useMovies from 'hooks/useMovies'
+import MoviesList from '@/components/moviesList'
+import MoviesSearch from '@/components/moviesSearch'
+import useMovies from '@/hooks/useMovies'
 import './styles.css'
 
 const RatedMovies: FC = () => {
@@ -13,13 +13,13 @@ const RatedMovies: FC = () => {
 
   if (moviesIsLoading) {
     return (
-      <div className="wrapper-rated">
+      <div className='wrapper-rated'>
         <Helmet>
           <title>{t('loading')} · iGlobal Film</title>
         </Helmet>
         <header>
           <MoviesSearch />
-          <p className="title">{t('ratedTitle')}</p>
+          <p className='title'>{t('ratedTitle')}</p>
         </header>
         <main>
           <MoviesList />
@@ -29,13 +29,13 @@ const RatedMovies: FC = () => {
   }
 
   return (
-    <div className="wrapper-rated">
+    <div className='wrapper-rated'>
       <Helmet>
         <title>{t('rated')} · iGlobal Film</title>
       </Helmet>
       <header>
         <MoviesSearch />
-        <h2 className="title">{t('ratedTitle')}</h2>
+        <h2 className='title'>{t('ratedTitle')}</h2>
       </header>
       <main>
         <MoviesList movies={movies} />

@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import { DEFAULT_ANCHOR_ORIGIN } from 'constants/default'
+import { type FC } from 'react'
+import { DEFAULT_ANCHOR_ORIGIN } from '@/constants/default'
 import Snackbar from '@mui/material/Snackbar'
 
 type NotificationProps = {

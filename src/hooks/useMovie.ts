@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
-import getMovie from 'services/getMovie'
-import MovieParams from 'models/movieModel'
-import MoviesContext from 'contexts/moviesContext'
+import getMovie from '@/services/getMovie'
+import type MovieParams from '@/models/movieModel'
+import MoviesContext from '@/contexts/moviesContext'
 
 type UseMovieProps = {
   parsedMovieId: number
@@ -15,12 +15,10 @@ const useMovie = ({ parsedMovieId: movieId }: UseMovieProps) => {
     movieIsLoading,
     updateMovieIsLoading,
     movieIsError,
-    updateMovieIsError
+    updateMovieIsError,
   }: any = useContext(MoviesContext)
 
-  const movieFromCache = movies.find(
-    (movie: MovieParams) => movie.id === movieId
-  )
+  const movieFromCache = movies.find((movie: MovieParams) => movie.id === movieId)
   const [movie, setMovie] = useState<MovieParams | undefined>(movieFromCache)
 
   useEffect(() => {
@@ -45,7 +43,7 @@ const useMovie = ({ parsedMovieId: movieId }: UseMovieProps) => {
       getMovie({
         movieId,
         language: i18n.language,
-        signal: controller.signal
+        signal: controller.signal,
       })
         .then(successResponse)
         .catch(errorResponse)

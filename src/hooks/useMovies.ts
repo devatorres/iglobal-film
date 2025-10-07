@@ -1,11 +1,11 @@
 import { useEffect, useContext, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { DEFAULT_PAGE } from 'constants/default'
-import getPopularMovies from 'services/getPopularMovies'
-import getSearchMovies from 'services/getSearchMovies'
-import getRatedMovies from 'services/getRatedMovies'
-import MoviesContext from 'contexts/moviesContext'
-import MovieParams from 'models/movieModel'
+import { DEFAULT_PAGE } from '@/constants/default'
+import getPopularMovies from '@/services/getPopularMovies'
+import getSearchMovies from '@/services/getSearchMovies'
+import getRatedMovies from '@/services/getRatedMovies'
+import MoviesContext from '@/contexts/moviesContext'
+import type MovieParams from '@/models/movieModel'
 import useUser from './useUser'
 
 const useMovies = (action: string, keyword = undefined) => {
@@ -24,7 +24,7 @@ const useMovies = (action: string, keyword = undefined) => {
       //? Mejorar el objeto añadiendo el lenguaje
       const movies = results.map((result: MovieParams) => ({
         ...result,
-        language: i18n.language
+        language: i18n.language,
       }))
 
       updateMovies(movies)
@@ -39,21 +39,21 @@ const useMovies = (action: string, keyword = undefined) => {
       popular: async () =>
         await getPopularMovies({
           language: i18n.language,
-          signal: controller.signal
+          signal: controller.signal,
         }),
       keyword: async () =>
         await getSearchMovies({
           language: i18n.language,
           signal: controller.signal,
           page,
-          keyword
+          keyword,
         }),
       list: async () =>
         await getRatedMovies({
           language: i18n.language,
           signal: controller.signal,
-          guestSession: user?.guest_session_id
-        })
+          guestSession: user?.guest_session_id,
+        }),
     }
 
     fetchData[action]().then(successResponse).catch(errorResponse)
@@ -73,7 +73,7 @@ const useMovies = (action: string, keyword = undefined) => {
       //? Mejorar el objeto añadiendo el lenguaje
       const nextMovies = results.map((result: MovieParams) => ({
         ...result,
-        language: i18n.language
+        language: i18n.language,
       }))
 
       updateMovies([...movies, ...nextMovies])
@@ -90,7 +90,7 @@ const useMovies = (action: string, keyword = undefined) => {
       language: i18n.language,
       signal: controller.signal,
       page,
-      keyword
+      keyword,
     })
       .then(successResponse)
       .catch(errorResponse)
@@ -104,7 +104,7 @@ const useMovies = (action: string, keyword = undefined) => {
     setPage,
     pageIsLoading,
     movies,
-    moviesIsLoading
+    moviesIsLoading,
   } as const
 }
 

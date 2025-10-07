@@ -1,10 +1,10 @@
-import { FC, useState } from 'react'
+import { type FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import useRate from 'hooks/useRate'
-import useUser from 'hooks/useUser'
+import useRate from '@/hooks/useRate'
+import useUser from '@/hooks/useUser'
 import Rating from '@mui/material/Rating'
-import GuestSessionModal from 'components/guestSessionModal'
-import Notification from 'components/notification'
+import GuestSessionModal from '@/components/guestSessionModal'
+import Notification from '@/components/notification'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import './styles.css'
 
@@ -33,7 +33,7 @@ const RateComponent: FC<RateComponentProps> = (props) => {
     setOpenRate(true)
   }
 
-  const handleChange = (event: any, newValue: any) => {
+  const handleChange = (_event: any, newValue: any) => {
     setValue(newValue)
   }
 
@@ -52,21 +52,21 @@ const RateComponent: FC<RateComponentProps> = (props) => {
 
   return (
     <>
-      <form className="rate" onSubmit={handleSubmit}>
+      <form className='rate' onSubmit={handleSubmit}>
         <Rating
-          name="half-rating"
-          size="large"
+          name='half-rating'
+          size='large'
           precision={0.5}
           value={value}
           onChange={handleChange}
           emptyIcon={
             <StarBorderIcon
-              fontSize="inherit"
+              fontSize='inherit'
               style={{ color: 'var(--color-secondary-hover)' }}
             />
           }
         />
-        <button type="submit">{t('vote')}</button>
+        <button type='submit'>{t('vote')}</button>
       </form>
       <GuestSessionModal
         open={openSessionModal}

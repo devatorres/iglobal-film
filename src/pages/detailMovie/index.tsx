@@ -1,16 +1,16 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
-import { NOT_FOUND_LINK } from 'constants/router'
+import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { LinearProgress } from '@mui/material'
-import { API_IMAGE_URL, API_IMAGE_URL_ORIGINAL } from 'constants/dbApi'
-import MovieRate from 'components/movieRate'
-import MoviesSearch from 'components/moviesSearch'
-import useMovie from 'hooks/useMovie'
-import MovieParams from 'models/movieModel'
-import formatDate from 'utils/formatDate'
-import NotFound from 'assets/images/not_found.png'
+import { NOT_FOUND_LINK } from '@/constants/router'
+import { API_IMAGE_URL, API_IMAGE_URL_ORIGINAL } from '@/constants/dbApi'
+import MovieRate from '@/components/movieRate'
+import MoviesSearch from '@/components/moviesSearch'
+import useMovie from '@/hooks/useMovie'
+import type MovieParams from '@/models/movieModel'
+import formatDate from '@/utils/formatDate'
+import NotFound from '@/assets/images/not_found.png'
 import './styles.css'
 
 const DetailMovie: FC = () => {
@@ -35,15 +35,15 @@ const DetailMovie: FC = () => {
 
   if (movieIsLoading) {
     return (
-      <div className="wrapper-detail">
+      <div className='wrapper-detail'>
         <Helmet>
           <title>{t('loading')} · iGlobal Film</title>
         </Helmet>
         <header>
-          <div className="decoration backdrop" />
+          <div className='decoration backdrop' />
           <MoviesSearch />
-          <figure className="poster loading">
-            <img src={NotFound} loading="lazy" alt={t('notFound')} />
+          <figure className='poster loading'>
+            <img src={NotFound} loading='lazy' alt={t('notFound')} />
           </figure>
         </header>
         <main></main>
@@ -55,30 +55,30 @@ const DetailMovie: FC = () => {
   if (!movie) return null
 
   return (
-    <div className="wrapper-detail">
+    <div className='wrapper-detail'>
       <Helmet>
         <title>{movie.title} · iGlobal Film</title>
       </Helmet>
       <header>
         {movie.backdrop_path !== null && (
-          <figure className="preview backdrop">
+          <figure className='preview backdrop'>
             <img
               src={`${API_IMAGE_URL_ORIGINAL}/${movie.backdrop_path}`}
               alt={movie.title}
-              loading="lazy"
+              loading='lazy'
             />
           </figure>
         )}
-        <div className="decoration backdrop" />
+        <div className='decoration backdrop' />
         <MoviesSearch />
-        <figure className="poster">
+        <figure className='poster'>
           <img
             src={
               movie.poster_path === null
                 ? NotFound
                 : `${API_IMAGE_URL}${movie.poster_path}`
             }
-            loading="lazy"
+            loading='lazy'
             alt={movie.title}
           />
           <span className={`percent ${getClassName(movie)}`}>{`${(
@@ -86,22 +86,22 @@ const DetailMovie: FC = () => {
           ).toFixed(0)}%`}</span>
           <LinearProgress
             className={`average ${getClassName(movie)}`}
-            variant="determinate"
+            variant='determinate'
             value={movie.vote_average * 10}
           />
         </figure>
       </header>
       <main>
-        <h1 className="title">{movie.title}</h1>
-        <p className="date">{`${formatDate(new Date(movie.release_date))} · ${
+        <h1 className='title'>{movie.title}</h1>
+        <p className='date'>{`${formatDate(new Date(movie.release_date))} · ${
           movie.adult ? '+18' : 'CC'
         }`}</p>
-        <p className="description">{movie.overview}</p>
-        <div className="extra">
-          <p className="tag">
+        <p className='description'>{movie.overview}</p>
+        <div className='extra'>
+          <p className='tag'>
             {t('originalLanguage')}: {movie.original_language}
           </p>
-          <p className="tag">
+          <p className='tag'>
             {t('originalTitle')}: {movie.original_title}
           </p>
         </div>
