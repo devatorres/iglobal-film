@@ -1,20 +1,54 @@
 .wrapper-not-found {
-	display: grid;
-	place-items: center;
-	width: 100%;
-	min-height: 100vh;
-	padding: 24px;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 24px;
 
-	background: radial-gradient(var(--modal-background-dots) 2px, transparent 2px),
-		radial-gradient(var(--modal-background-dots) 2px, transparent 2px);
-	background-size: 20px 20px;
-	background-position: 0 0, 10px 10px;
+  background:
+    radial-gradient(var(--modal-background-dots) 2px, transparent 2px),
+    radial-gradient(var(--modal-background-dots) 2px, transparent 2px);
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    10px 10px;
 }
 
-.wrapper-not-found .title {
-	font-size: clamp(100px, 15vw, 200px);
-	text-shadow: -4px 4px 12px rgba(36, 236, 230, 0.8),
-		4px -4px 14px rgba(246, 42, 81, 0.8);
-	font-weight: 700;
-	color: var(--font);
+.wrapper-not-found .wrapper-content {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.wrapper-content .title {
+  font-size: clamp(100px, 15vw, 200px);
+  text-shadow:
+    -4px 4px 12px rgba(36, 236, 230, 0.8),
+    4px -4px 14px rgba(246, 42, 81, 0.8);
+  font-weight: 700;
+  color: var(--font);
+}
+
+.wrapper-content .description {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 16px);
+  font-weight: 400;
+  color: var(--font);
+}
+
+.wrapper-content .description > a {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  margin-left: 0.5rem;
+  transition-property: filter, color;
+  transition-duration: 180ms;
+  transition-timing-function: ease;
+}
+
+.wrapper-content .description > a:hover {
+  color: var(--btn-color);
+  filter: drop-shadow(0 0 6px var(--btn-shadow));
 }

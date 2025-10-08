@@ -18,7 +18,7 @@ const RatedMovies: FC = () => {
           <title>{t('loading')} · iGlobal Film</title>
         </Helmet>
         <header>
-          <MoviesSearch />
+          <MoviesSearch withBackButton />
           <p className='title'>{t('ratedTitle')}</p>
         </header>
         <main>
@@ -34,7 +34,7 @@ const RatedMovies: FC = () => {
         <title>{t('rated')} · iGlobal Film</title>
       </Helmet>
       <header>
-        <MoviesSearch />
+        <MoviesSearch withBackButton />
         <h2 className='title'>{t('ratedTitle')}</h2>
       </header>
       <main>

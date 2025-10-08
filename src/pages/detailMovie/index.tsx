@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import { useMemo, type FC } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
@@ -18,6 +18,11 @@ const DetailMovie: FC = () => {
   const { movieId } = useParams()
   const parsedMovieId: number = Number(movieId)
   const { movie, movieIsLoading, movieIsError } = useMovie({ parsedMovieId })
+
+  const ageRange = useMemo(() => {
+    if (!movie) return ''
+    return movie.adult ? '+18' : 'G'
+  }, [movie])
 
   const getClassName = (movie: MovieParams) => {
     let className: string
@@ -41,7 +46,7 @@ const DetailMovie: FC = () => {
         </Helmet>
         <header>
           <div className='decoration backdrop' />
-          <MoviesSearch />
+          <MoviesSearch withBackButton />
           <figure className='poster loading'>
             <img src={NotFound} loading='lazy' alt={t('notFound')} />
           </figure>
@@ -70,7 +75,7 @@ const DetailMovie: FC = () => {
           </figure>
         )}
         <div className='decoration backdrop' />
-        <MoviesSearch />
+        <MoviesSearch withBackButton />
         <figure className='poster'>
           <img
             src={
@@ -93,9 +98,10 @@ const DetailMovie: FC = () => {
       </header>
       <main>
         <h1 className='title'>{movie.title}</h1>
-        <p className='date'>{`${formatDate(new Date(movie.release_date))} · ${
-          movie.adult ? '+18' : 'CC'
-        }`}</p>
+        <p className='date'>
+          {`${formatDate(new Date(movie.release_date))} · `}
+          <span title={t(`ageRange.${ageRange}`)}>{ageRange}</span>
+        </p>
         <p className='description'>{movie.overview}</p>
         <div className='extra'>
           <p className='tag'>
