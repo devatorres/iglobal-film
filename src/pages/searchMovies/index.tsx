@@ -40,7 +40,7 @@ const SearchMovies: FC = () => {
         <title>{t('loading')} · iGlobal Film</title>
       </Helmet>
       <header>
-        <MoviesSearch initialKeyword={keyword} />
+        <MoviesSearch initialKeyword={keyword} withBackButton />
         <p className='results'>{`${movies.length} ${t('results')} ${decodeURI(
           keyword
         )}`}</p>
@@ -56,7 +56,7 @@ const SearchMovies: FC = () => {
         <meta name='description' content={title} />
       </Helmet>
       <header>
-        <MoviesSearch initialKeyword={keyword} />
+        <MoviesSearch initialKeyword={keyword} withBackButton />
         <p className='results'>{`${movies.length} ${t('results')} ${decodeURI(
           keyword
         )}`}</p>

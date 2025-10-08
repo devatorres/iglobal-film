@@ -139,6 +139,10 @@
   margin-bottom: 0.4rem;
 }
 
+.wrapper-detail main .date > span {
+  cursor: pointer;
+}
+
 .wrapper-detail main .description {
   max-width: 680px;
   font-size: clamp(16px, 2vw, 16px);
